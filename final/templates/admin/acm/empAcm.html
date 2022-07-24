@@ -1,0 +1,670 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% block A %}
+ <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM Employee</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">ACM Employee</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+    <div class="row">
+        <div class="col-xl-12">
+           <div class="card">
+              <div class="card-body">
+                 <h4 class="header-title mb-3"> Create Employee</h4>
+                 <form action="/addEmpACM/" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    <div id="basicwizard">
+                       <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-4">
+                          <li class="nav-item">
+                             <a href="#tab1" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                             <i class="mdi mdi-account-circle mr-1"></i>
+                             <span class="d-none d-sm-inline">Basic Details</span>
+                             </a>
+                          </li>
+                          <li class="nav-item">
+                             <a href="#tab2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                             <i class="mdi mdi-face-profile mr-1"></i>
+                             <span class="d-none d-sm-inline">Address Details</span>
+                             </a>
+                          </li>
+                          <li class="nav-item">
+                             <a href="#tab4" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                             <i class="mdi mdi-face-profile mr-1"></i>
+                             <span class="d-none d-sm-inline">Salary Details</span>
+                             </a>
+                          </li>
+                          <li class="nav-item">
+                             <a href="#tab5" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                             <i class="mdi mdi-face-profile mr-1"></i>
+                             <span class="d-none d-sm-inline">Family & Documents Details</span>
+                             </a>
+                          </li>
+                          <li class="nav-item">
+                             <a href="#tab6" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                             <i class="mdi mdi-face-profile mr-1"></i>
+                             <span class="d-none d-sm-inline">Bank Details</span>
+                             </a>
+                          </li>
+                          <li class="nav-item">
+                             <a href="#tab3" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                             <i class="mdi mdi-checkbox-marked-circle-outline mr-1"></i>
+                             <span class="d-none d-sm-inline">Finish</span>
+                             </a>
+                          </li>
+                       </ul>
+                       <div class="tab-content b-0 mb-0">
+                          <div class="tab-pane" id="tab1">
+                             <div class="row">
+                                <div class="col-md-4">
+                                   <label for="empid" class="col-md-12 col-form-label">Employee ID:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="text" class="form-control" id="empid" name="empid" placeholder="Emp ID">
+                                   </div>
+                                </div>
+                                <div class="col-md-4">
+                                   <label for="fullname" class="col-md-12 col-form-label">Full Name:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Your Name">
+                                   </div>
+                                </div>
+                                <div class="col-md-4">
+                                   <label for="password" class="col-md-12 col-form-label">Password:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="Password" class="form-control" id="password" name="password" placeholder="Password">
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                             <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-3">
+                                   <label for="role" class="col-md-12 col-form-label">Role:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <select name="roleid" class="selectpicker" data-live-search="true"  data-style="btn-light">
+                                         <option>Select Role</option>
+                                         {% for s in role %}
+                                         <option value="{{ s.id }}"> {{ s.role }}</option>
+                                         {% endfor %}
+                                      </select>
+                                   </div>
+                                </div>
+<!--                                <div class="col-md-3">-->
+<!--                                   <label for="company" class="col-md-12 col-form-label">Company:-->
+<!--                                   <span class="text-danger">*</span></label>-->
+<!--                                   <div class="col-md-12">-->
+<!--                                      <select name="companyid" class="selectpicker" data-live-search="true"  data-style="btn-light">-->
+<!--                                         <option>Select Company</option>-->
+<!--                                         {% for c in company %}-->
+<!--                                         <option value="{{ c.id }}">{{ c.companyname }}</option>-->
+<!--                                         {% endfor%}-->
+<!--                                      </select>-->
+<!--                                   </div>-->
+<!--                                </div>-->
+                                <div class="col-md-3">
+                                   <label for="bloodgroup" class="col-md-12 col-form-label">Blood Group:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <select name="bloodgroup" class="selectpicker" data-live-search="true"  data-style="btn-light">
+                                         <option>Select Blood Group</option>
+                                         <option value="a+">A +ve</option>
+                                         <option value="a-">A -ve</option>
+                                         <option value="b+">B +ve</option>
+                                         <option value="b-">B -ve</option>
+                                         <option value="o+">O +ve</option>
+                                         <option value="o-">O -ve</option>
+                                         <option value="ab+">AB +ve</option>
+                                         <option value="ab-">AB -ve</option>
+                                      </select>
+                                   </div>
+                                </div>
+                                <div class="col-md-1.5">
+                                   <div class="form-group" style="margin-top: 6px;">
+                                      <label>Gender:</label>
+                                      <span class="text-danger">*</span></label><br>
+                                      <div class="form-check-inline" style="margin-top: 7px;">
+                                         <div class="radio mb-10 radio-info form-check-inline" style="margin-left: 8px;">
+                                            <input type="radio" id="inlineRadio1" value="male" name="gender" checked>
+                                            <label for="inlineRadio1"> Male </label>
+                                         </div>
+                                         <div class="radio mb-10 form-check-inline" style="margin-left: 5px;">
+                                            <input type="radio" id="inlineRadio2" value="female" name="gender">
+                                            <label for="inlineRadio2"> Female </label>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="col-md-1.5">
+                                   <div class="form-group" style="margin-left: 20px; margin-top: 6px;">
+                                      <label>Material Status:</label>
+                                      <span class="text-danger">*</span></label><br>
+                                      <div class="form-check-inline" style="margin-top: 7px;">
+                                         <div class="radio mb-10 radio-info form-check-inline">
+                                            <input type="radio" id="mstatus1" value="single" name="mstatus" checked>
+                                            <label for="inlineRadio1"> Single </label>
+                                         </div>
+                                         <div class="radio mb-10 form-check-inline" style="margin-left: 5px;">
+                                            <input type="radio" id="mstatus2" value="married" name="mstatus">
+                                            <label for="inlineRadio2"> Merried </label>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                             <div class="row" style="margin-top: 25px;">
+                                <div class="col-md-3">
+                                   <label for="mobnum">Mobile No:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-mobile-alt"></i>
+                                         </span>
+                                      </div>
+                                      <input type="number" class="form-control" name="mobnum"
+                                         placeholder="+91-99999-88888">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="nativenum">Native Contact No:</label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-mobile"></i>
+                                         </span>
+                                      </div>
+                                      <input type="number" class="form-control" name="nativenum"
+                                         placeholder="+91-99999-88888">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="email">Email Address:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fa fa-envelope-square"></i>
+                                         </span>
+                                      </div>
+                                      <input type="email" class="form-control" name="email"
+                                         placeholder="Example102@hotmail.com">
+                                   </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: -9px;">
+                                   <label for="Inqdate" class="col-md-12 col-form-label">Birth Date:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12 form-group row">
+                                      <input type="text" name="dob" class="form-control" data-provide="datepicker" data-date-autoclose="true" placeholder="MM-DD-YYYY">
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                          </div>
+                          <!-- tab1 end  -->
+                          <div class="tab-pane" id="tab2">
+                             <div class="text-center">
+                                <input type="checkbox" name="copying" onclick="copyaddress(this.form)">
+                                <label for="paddress"> Same as Permenant Address</label>
+                             </div>
+                             <script type="text/javascript">
+                                function copyaddress(f)
+                                {
+                                    if(f.copying.checked == true)
+                                    {
+                                        f.taddress.value = f.paddress.value;
+                                    }
+                                }
+                             </script>
+                             <div class="row">
+                                <div class="col-md-5" style="margin-left: 80px;">
+                                   <label for="paddress" class="col-md-12 col-form-label">Parmenant Address:
+                                   <span class="text-danger">*</span></label>
+                                   <textarea id="paddress" class="form-control" name="paddress" maxlength="200" rows="3" placeholder="This textarea has a limit of 200 chars."></textarea>
+                                </div>
+                                <div class="col-md-5" style="margin-left: 50px;">
+                                   <label for="taddress" class="col-md-12 col-form-label">Temporary Address:
+                                   <span class="text-danger">*</span></label>
+                                   <textarea id="taddress" class="form-control" name="taddress" maxlength="200" rows="3" placeholder="This textarea has a limit of 200 chars."></textarea>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                             <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-3">
+                                   <label for="pstate" class="col-md-12 col-form-label">State:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <select name="stateid" class="selectpicker" data-live-search="true"  data-style="btn-light">
+                                         <option>Select Parmenant State</option>
+                                         {% for s in state %}
+                                         <option value="{{ s.id }}">{{ s.statename }}</option>
+                                         {% endfor %}
+                                      </select>
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="pcity" class="col-md-12 col-form-label">City:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <select name="cityid" class="selectpicker" data-live-search="true"  data-style="btn-light">
+                                         <option>Select Parmenant City</option>
+                                         {% for c in city %}
+                                          <option value="{{ c.id }}">{{ c.cityname }}</option>
+                                         {% endfor %}
+                                      </select>
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="zipcode" class="col-md-12 col-form-label">Zip Code:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="zipcode" name="zipcode" placeholder="888-999">
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                          </div>
+                          <!-- tab2 end  -->
+                          <div class="tab-pane" id="tab4">
+                             <div class="row">
+                                <div class="col-md-3">
+                                   <label for="basicsalary" class="col-md-12 col-form-label">Basic Salary:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="bsalary" name="bsalary" placeholder="In INR">
+                                   </div>
+                                </div>
+                                <div class="col-md-2">
+                                   <div class="form-group" style="margin-top: 7px;">
+                                      <label>Tex on Salary:</label>
+                                      <span class="text-danger">*</span></label><br>
+                                      <div class="form-check-inline" style="margin-left: 80px; margin-top: 10px;">
+                                         <div class="radio mb-10">
+                                            <input type="radio" name="tax" id="taxY" value="Yes">
+                                            <label for="taxY">Yes</label>
+                                         </div>
+                                         <div class="radio mb-10" style="margin-left: 20px;">
+                                            <input type="radio" name="tax" id="taxN" value="No">
+                                            <label for="taxN">No</label>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="col-md-0.5 fas fa-plus" style="margin-top: 50px; margin-left: 40px; margin-right: 10px;"> </div>
+                                <div class="col-md-3">
+                                   <label for="bankarea" class="col-md-12 col-form-label">How Many Tax:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <select name="taxpercentage" class="selectpicker" id="htex" name="htex" data-live-search="true"             data-style="btn-light">
+                                         <option>Select Tex in Percentage</option>
+                                         <option value="1">1%</option>
+                                         <option value="2">2%</option>
+                                         <option value="3">3%</option>
+                                         <option value="4">4%</option>
+                                         <option value="5">5%</option>
+                                         <option value="6">6%</option>
+                                         <option value="7">7%</option>
+                                         <option value="8">8%</option>
+                                         <option value="9">9%</option>
+                                         <option value="10">10%</option>
+                                         <option value="11">11%</option>
+                                         <option value="12">12%</option>
+                                         <option value="13">13%</option>
+                                         <option value="14">14%</option>
+                                         <option value="15">15%</option>
+                                         <option value="16">16%</option>
+                                         <option value="17">17%</option>
+                                         <option value="18">18%</option>
+                                         <option value="19">19%</option>
+                                         <option value="20">20%</option>
+                                      </select>
+                                   </div>
+                                </div>
+                                <div class="col-md-0.5 fas fa-equals" style="margin-top: 50px; margin-left: 10px; margin-right: 10px;""> </div>
+                                <div class="col-md-3">
+                                   <label for="finalsalary" class="col-md-12 col-form-label">Final Salary:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="fsalary" name="fsalary" placeholder="In INR">
+                                   </div>
+                                </div>
+                                <script type="text/javascript">
+                                   var x = document.getElementById("htex");
+                                   var texn = document.getElementById("taxN");
+                                   var texy = document.getElementById("taxY");
+                                   var fsalary = document.getElementById("fsalary");
+                                   var bsalary = document.getElementById("bsalary");
+
+                                   x.addEventListener("change", copysalary);
+                                   texn.addEventListener("input", copysalary);
+                                   texy.addEventListener("input", copysalary);
+                                   fsalary.addEventListener("input", copysalary);
+                                   bsalary.addEventListener("input", copysalary);
+
+                                   function copysalary()
+                                   {
+                                   if(texn.checked == true)
+                                   {
+                                       x.disabled = true;
+                                       fsalary.value = bsalary.value;
+                                   }
+                                   else{
+                                       x.disabled = false;
+                                       fsalary.value = (bsalary.value-(bsalary.value*parseInt(x.value)/100));
+                                   }
+                                   }
+                                </script>
+                             </div>
+                             <!-- end row -->
+                             <div class="row">
+                                <div class="col-md-3">
+                                   <div class="form-group" style="margin-left: 20px; margin-top: 20px;">
+                                      <label>Working Days:</label>
+                                      <span class="text-danger">*</span></label><br>
+                                      <div class="form-check-inline">
+                                         <div class="checkbox checkbox-primary mb-1">
+                                            <input type="checkbox" name="workdays[]" id="day1"
+                                               value="Mon" data-parsley-mincheck="">
+                                            <label for="day1"> Monday </label>
+                                         </div>
+                                         <div class="checkbox checkbox-primary mb-1" style="margin-left: 70px;">
+                                            <input type="checkbox" name="workdays[]" id="day2"
+                                               value="Tue">
+                                            <label for="day2"> Tuesday </label>
+                                         </div>
+                                      </div>
+                                      <br>
+                                      <div class="form-check-inline">
+                                         <div class="checkbox checkbox-primary" style="margin-bottom:5px;">
+                                            <input type="checkbox" name="workdays[]" id="day3"
+                                               value="Wed">
+                                            <label for="day3"> Wednesday </label>
+                                         </div>
+                                         <div class="checkbox checkbox-primary mb-1" style="margin-left: 45px;
+                                            margin-top: 4px;">
+                                            <input type="checkbox" name="workdays[]" id="day4"
+                                               value="Thu" data-parsley-mincheck="2">
+                                            <label for="day4"> Thursday </label>
+                                         </div>
+                                      </div>
+                                      <br>
+                                      <div class="form-check-inline">
+                                         <div class="checkbox checkbox-primary mb-1">
+                                            <input type="checkbox" name="workdays[]" id="day5"
+                                               value="Fri">
+                                            <label for="day5"> Friday </label>
+                                         </div>
+                                         <div class="checkbox checkbox-primary" style="margin-left: 80px;">
+                                            <input type="checkbox" name="workdays[]" id="day6"
+                                               value="Sat">
+                                            <label for="day6"> Saturday </label>
+                                         </div>
+                                      </div>
+                                      <div class="checkbox checkbox-primary">
+                                         <input type="checkbox" name="workdays[]" id="day7"
+                                            value="Sun">
+                                         <label for="day7"> Sunday </label>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 10px;">
+                                   <label for="leave" class="col-md-12 col-form-label">Asign Leaves:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="asignleave" name="asignleave" placeholder="Number of Leaves">
+                                   </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 10px;">
+                                   <label for="cutleave" class="col-md-12 col-form-label">Cut Rs. of Leave:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="cutleave" name="cutleave" placeholder="Cut Number of Leaves">
+                                   </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 10px;">
+                                   <label for="cuthalfleave" class="col-md-12 col-form-label">Cut Rs. of Half-Leave:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="cuthalfleave" name="cuthalfleave" placeholder="Cut Number of Half Leaves">
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                             <div class="row" style="margin-top: -80px; margin-bottom: 30px;">
+                                <div class="col-md-3" style="margin-left: 520px;">
+                                   <label for="comemtime" class="col-md-12 col-form-label">Coming Time:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="form-group mb-0">
+                                      <div class="input-group clockpicker" data-placement="top" data-align="top" data-autoclose="true">
+                                         <input type="text" name="comingtime" class="form-control" value="13:14">
+                                         <div class="input-group-append">
+                                            <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="leavetime" class="col-md-12 col-form-label">Leaving Time:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="form-group mb-0">
+                                      <div class="input-group clockpicker" data-placement="top" data-align="top" data-autoclose="true">
+                                         <input type="text" name="leavingtime" class="form-control" value="13:14">
+                                         <div class="input-group-append">
+                                            <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                         </div>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                          </div>
+                          <!-- tab4 end  -->
+                          <div class="tab-pane" id="tab5">
+                             <div class="row">
+                                <div class="col-md-3" style="margin-top: 10px;">
+                                   <label for="fathername" class="col-md-12 col-form-label">Father Name:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="text" class="form-control" id="fathername" name="fathername" placeholder="Father Name">
+                                   </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 10px;">
+                                   <label for="fathername" class="col-md-12 col-form-label">Father Name:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="text" class="form-control" id="mothername" name="mothername" placeholder="Mother Name">
+                                   </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 10px;">
+                                   <label for="fathernum" class="col-md-12 col-form-label">Father Contact:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="fathernum" name="fcontact" placeholder="Father's ContactNum">
+                                   </div>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 10px;">
+                                   <label for="mothernum" class="col-md-12 col-form-label">Mother Contact:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <input type="number" class="form-control" id="mothernum" name="mcontact" placeholder="Mother's ContactNum">
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                             <div class="row" style="margin-top: 20px;">
+                                <div class="col-lg-4">
+                                   <div class="mt-3">
+                                      <input type="file" name="adharcard" class="dropify" data-max-file-size="1M" />
+                                      <p class="text-muted text-center mt-2 mb-0">Adhar card (Max size 1MB)</p>
+                                   </div>
+                                </div>
+                                <div class="col-lg-4">
+                                   <div class="mt-3">
+                                      <input type="file" name="pancard" class="dropify" data-max-file-size="1M" />
+                                      <p class="text-muted text-center mt-2 mb-0">PAN card (Max size 1MB)</p>
+                                   </div>
+                                </div>
+                                <div class="col-lg-4">
+                                   <div class="mt-3">
+                                      <input type="file" name="photo" class="dropify" data-max-file-size="1M" />
+                                      <p class="text-muted text-center mt-2 mb-0">Passport Size Photo (Max size 1MB)</p>
+                                   </div>
+                                </div>
+                             </div>
+                             <!-- end row -->
+                          </div>
+                          <!-- tab5 end  -->
+                          <div class="tab-pane" id="tab6">
+                             <div class="row">
+                                <div class="col-md-3">
+                                   <label for="bankname">Bank Name:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fa fa-university"></i>
+                                         </span>
+                                      </div>
+                                      <input type="text" class="form-control" name="bankname"
+                                         placeholder="Bank Name here">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="branchname">Branch Name:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-coins"></i>
+                                         </span>
+                                      </div>
+                                      <input type="text" class="form-control" name="branchname"
+                                         placeholder="Branch Name here">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="accnum">Account Number:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i>
+                                         </span>
+                                      </div>
+                                      <input type="number" class="form-control" name="accnum"
+                                         placeholder="Bank Account Number">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="acctype" class="col-md-12 col-form-label">Account Type:
+                                   <span class="text-danger">*</span></label>
+                                   <div class="col-md-12">
+                                      <select name="acctype" class="selectpicker" name="acctype" data-live-search="true" data-style="btn-light">
+                                         <option>Select Account Type</option>
+                                         <option value="saving">Saving Account</option>
+                                         <option value="current">Current Account</option>
+                                      </select>
+                                   </div>
+                                </div>
+                             </div>
+                             <div class="row" style="margin-top: 30px; margin-bottom: 20px;">
+                                <div class="col-md-3">
+                                   <label for="pannumber">PANCard Number:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-id-card"></i>
+                                         </span>
+                                      </div>
+                                      <input type="number" class="form-control" name="pannumber"
+                                         placeholder="Pancard Number">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="chqnumber">Cheque Number:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-money-check-alt"></i>
+                                         </span>
+                                      </div>
+                                      <input type="number" class="form-control" name="chqnumber"
+                                         placeholder="Cheque Number">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="ifscode">IFSC Code:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-barcode"></i>
+                                         </span>
+                                      </div>
+                                      <input type="number" class="form-control" name="codeifsc"
+                                         placeholder="IFSC Code">
+                                   </div>
+                                </div>
+                                <div class="col-md-3">
+                                   <label for="micrcode">MICR Code:</label>
+                                   <span class="text-danger">*</span></label>
+                                   <div class="input-group">
+                                      <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="fas fa-code"></i>
+                                         </span>
+                                      </div>
+                                      <input type="number" class="form-control" name="codemicr"
+                                         placeholder="MICR Code">
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+                          <!-- tab6 end  -->
+                          <div class="tab-pane" id="tab3">
+                             <div class="row">
+                                <div class="col-12">
+                                   <div class="text-center">
+                                      <h2 class="mt-0"><i class="mdi mdi-check-all"></i></h2>
+                                      <h3 class="mt-0">Thank you !</h3>
+                                      <div class="mb-3">
+                                        <button type="submit">Submit Records</button>
+                                      </div>
+                                   </div>
+                                </div>
+                                <!-- end col -->
+                             </div>
+                             <!-- end row -->
+                          </div>
+                          <ul class="list-inline mb-0 wizard">
+                             <li class="previous list-inline-item">
+                                <a href="javascript: void;" class="btn btn-secondary">Previous</a>
+                             </li>
+                             <li class="next list-inline-item float-right">
+                                <a href="javascript: void;" class="btn btn-secondary">NEXT</a>
+                             </li>
+
+                          </ul>
+                       </div>
+                       <!-- tab-content -->
+                    </div>
+                    <!-- end #basicwizard-->
+                 </form>
+              </div>
+              <!-- end card-body -->
+           </div>
+           <!-- end card-->
+        </div>
+        <!-- end col -->
+     </div>
+{% endblock %}

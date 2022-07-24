@@ -1,0 +1,214 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% load static %}
+{% block A %}
+
+
+<form action="/admin_inq_insert/" method="post" enctype="multipart/form-data"><br>
+    {% csrf_token %}
+    <div class="model-header" style="font-size:200%;">
+                    <center style="color:black;">Fill Inquiry Form</center>
+    </div>
+    <div class="row">
+                        <div class="col-md-3">
+                                <div class="dropify-wrapper border border-primary" style="height: 150px;">
+                                    <input type="file" name="studentphotos" class="dropify" required="">
+                                    <p> Student Photo</p>
+                                    <span>Upload here ...</span>
+                                </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="col-md-10 col-form-label">Full Name:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control border border-primary" data-validate="true" name="fullname"
+                                       placeholder="Enter Full Name Here" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pcontact" class="col-md-12 col-form-label">Personal Contact:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-12">
+                                <div class="input-group-append">
+                                    <input type="number" name="pnum" class="form-control border border-primary" id="contact"
+                                           placeholder="+91 12345 67890" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="Emailadrress" class="col-md-10 col-form-label">Email ID:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-10">
+                                <div class="input-group-append">
+                                    <input type="email" name="email" class="form-control border border-primary" id="emailaddress"
+                                           placeholder="example@gmail.com" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                                <label for="reffname" class="col-md-10 col-form-label">Refference Name:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-10">
+                                    <div class="input-group-append">
+                                        <input type="text" name="reffname" class="form-control border border-primary"
+                                               placeholder="Refference Name" required="">
+                                    </div>
+                                </div>
+                            </div>
+                    </div><br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="reffcontact" class="col-md-10 col-form-label">Refference Contact:
+                                    <span class="text-danger"></span></label>
+                                <div class="col-md-10">
+                                    <div class="input-group-append">
+                                        <input type="numbers" maxlength="13" name="reffcontact" class="form-control border border-primary"
+                                               id="reffcontact"
+                                               placeholder="+91 12345 67890"required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-8 col-form-label">Inquiry Date:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-9">
+                                    <div class="input-group-append">
+                                        <input type="date" name="inqdate" class="form-control border border-primary" placeholder="INQDATE" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-8 col-form-label">DOB:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-9">
+                                    <div class="input-group-append">
+                                        <input type="date" name="dob" class="form-control border border-primary"  >
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="university" class="col-md-10 col-form-label">Current University:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-10">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="University"
+                                            data-style="btn-light">
+                                        <option>Select Current University <i class="fa fa-caret-down" aria-hidden="true"></i></option>
+                                        <option>Gujarat Technological University</option>
+                                        <option>Nirma University</option>
+                                        <option>Pandit Dindayal Petrolium University</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Institute" class="col-md-12 col-form-label">Current Institute:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="Institute"
+                                            data-style="btn-light">
+                                        <option>Select Current Institute</option>
+                                        <option>L.J. Institute of technology</option>
+                                        <option>Institute of Technology</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="col-md-10 col-form-label  ">Languages for Inquiry:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-10 ">
+                                    <select class="selectpicker border border-primary " required="" data-live-search="true" name="lang">
+                                        <option>Select Languages</option>
+                                        {%for s in res%}
+                                        <option value="{{s.id}}">{{s.lang}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="sem" class="col-md-12 col-form-label">Current Semester:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="Semester"
+                                            data-style="btn-light">
+                                        <option>Select Current Semester</option>
+                                        <option>First</option>
+                                        <option>Second</option>
+                                        <option>Third</option>
+                                        <option>Forurth</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="stream" class="col-md-12 col-form-label">Current Stream:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="Stream"
+                                            data-style="btn-light">
+                                        <option>Select Current Stream</option>
+                                        <option>Diploma</option>
+                                        <option>Bachelor Degree(B.Tech)</option>
+                                        <option>Masters Degree(M.Tech)</option>
+                                        <option>Bachelor Of Computer Application</option>
+                                        <option>Masters Of Computer Application</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-12 col-form-label">Select Structures:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="structurename" data-style="btn-light">
+                                        <option>Select Structure to learning</option>
+                                        {%for s in ress%}
+                                        <option value="{{s.id}}">{{s.structurename}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="col-md-6 col-form-label">Select Typed of Training:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="TrainigTyped"
+                                            data-style="btn-light">
+                                        <option>Select Typed of Training</option>
+                                        {%for s in resu%}
+                                        <option value="{{s.id}}">{{s.TrainigTyped}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <div class="mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="icon-user icon-white"></i> Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+
+</form>
+{%endblock%}

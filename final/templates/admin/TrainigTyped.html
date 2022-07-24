@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% load static %}
+{% block A %}
+<html lang="en">
+
+<head>
+        <meta charset="utf-8" />
+        <title> STRUCTURE </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    </head>
+
+    <body>
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">TrainigTyped</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">TrainigTyped Details</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-12 text-sm-center form-inline">
+                                        <div class="form-group mr-2">
+                                            <button id="demo-btn-addrow" class="btn btn-primary" data-toggle="modal" data-animation="sign" data-plugin="custommodal"  data-target="#con-close-modal-roleacm" onclick="openmodel()"><i class="mdi mdi-plus-circle mr-2"  ></i> Add Training Type</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="demo-input-search2" type="text" placeholder="Search" class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table  class="table table-centered table-striped table-bordered mb-0 toggle-circle" data-page-size="7">
+                                <thead>
+                                <tr>
+
+                                   <th data-sort-initial="true" data-toggle="true"> <center>id</center></th>
+                                    <th data-sort-initial="true" data-toggle="true"><center>TrainigTyped Name</center></th>
+                                    <th data-sort-ignore="true" class="min-width"><center>Delete</center></th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                 {% for s in resu %}
+                                <tr>
+                                    <td><center>{{s.id}}</center></td>
+                                    <td><center>{{s.TrainigTyped}}</center></td>
+                                    <td class="text-center"><button class="btn btn-danger btn-xs btn-icon" onclick="tdelte('{{s.id}}')"><i class="fa fa-times"></i></button></td>
+
+                                </tr>
+                                 {% endfor%}
+                                </tbody>
+
+                                <tfoot>
+                                <tr class="active">
+                                    <td colspan="6">
+                                        <div class="text-right">
+                                            <ul class="pagination pagination-split justify-content-end footable-pagination m-t-10"></ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div> <!-- end card-box -->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+ <form action="/TrainigTypedinsert/" enctype="multipart/form-data"  method="POST">
+    {% csrf_token %}
+    <div id="con-close-modal-roleacm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add TrainigTyped</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">TrainigTyped Name</label>
+                                <span class="text-danger">*</span></label>
+                                <input type="hidden" value="0" name="id">
+                                <input type="text" name="TrainigTyped" class="form-control" id="recipient-name" placeholder="Enter Trainig Typed Name">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light" id="UU">Save</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+        <script>
+            function tdelte(id){
+                window.location.href="/Trainigydelete/?id="+id;
+            }
+        </script>
+
+    </body>
+</html>
+{% endblock %}

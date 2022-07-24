@@ -1,0 +1,178 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+{% load static %}
+{% block A %}
+<!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Assignment</a></li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Assignment Students Details</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+<!--            <center><h2 class="">Send Assignments For Students</h2></center>-->
+            <br>
+            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Give Assignment</button>
+            <table  data-toggle="table"
+                   data-toolbar="#demo-delete-row"
+                   data-search="true"
+                   data-show-refresh="true"
+                   data-show-columns="true"
+                   data-sort-name="id"
+                   data-page-list="[5, 10, 20]"
+                   data-page-size="5"
+                   data-pagination="true" data-show-pagination-switch="true" class="table table-bordered">
+                <thead class="thead-light text-center">
+                <tr>
+
+<!--                    <th></th>-->
+                    <th data-field="stuname" data-sortable="true">Student Name</th>
+                    <th data-field="name" data-sortable="true">Language</th>
+                    <th data-field="ass" data-sortable="true" data-formatter="dateFormatter">Assignment</th>
+                    <th data-field="sendsms" data-sortable="true" data-formatter="dateFormatter">SMS Assignments
+                    </th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for s in results %}
+                <tr class="text-center">
+<!--                    <td><input type="checkbox" value="{{s.fullname}}" name="abc[]"></td>-->
+                    <td>{{s.fullname}}</td>
+                    <td>{{ s.lang.lang }}</td>
+                    <td>{{s.ass}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-xs btn-icon" onclick="message123('{{s.id}}')"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                    </td>
+
+                </tr>
+                {% endfor %}.
+
+                </tbody>
+            </table>
+        </div> <!-- end card-box-->
+    </div> <!-- end col-->
+</div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Give Assignment</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST" action="/Assignmentsinsert/">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <!--              <label>Select Student (As Per Name):</label>-->
+                        <!--                        {% for s in res %}-->
+                        <!--               <br><input  type="checkbox" value="{{s.id}}" name="check[]">-->
+                        <!--                                           {{s.fullname}}-->
+                        <!--               {%endfor%}-->
+                        <label>Assignment:</label><input class="form-control" placeholder="Enter Assignments" type="text" name="ass"><br><br>
+
+
+                        <!--          navu che    -->
+
+                        <table id="demo-custom-toolbar" data-toggle="table"
+                               data-toolbar="#demo-delete-row"
+                               data-search="true"
+                               data-show-refresh="true"
+                               data-show-columns="true"
+                               data-sort-name="id"
+                               data-page-list="[5, 10, 20]"
+                               data-page-size="5"
+                               data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
+                            <thead class="thead-light">
+                            <tr>
+
+                                <th></th>
+                                <th data-field="stuname" data-sortable="true">Student Name</th>
+                                <th data-field="name" data-sortable="true">Language</th>
+
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for s in results %}
+                            <tr>
+
+                                <td><input type="checkbox" value="{{s.id}}" name="check[]"></td>
+                                <td>{{s.fullname}}</td>
+                                <td>{{ s.language1.lang }}</td>
+
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+
+
+                        <!--navu end-->
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+function message123(id)
+{
+Swal.fire({
+  title: 'Are you sure?',
+  text: 'You will Send Sms for Assignment file!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, Send it!',
+  cancelButtonText: 'No, keep it'
+}).then((result) => {
+  if (result.value) {
+   window.location.href="/sendsmsgood/?id="+id;
+
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+}
+
+</script>
+
+
+{% endblock%}

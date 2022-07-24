@@ -1,0 +1,118 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% load static %}
+{% block A %}
+{%block script%}
+<script>
+    function citydel(id){
+         window.location.href="/statedel/?Id="+id;
+    }
+</script>
+
+{%endblock%}
+ <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">City</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">City</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+<button type="button" class="round btn btn-outline-success waves-effect waves-light"
+    data-toggle="modal" data-target="#con-close-modal-roleacm" onclick="openmodel()">
+<i class="fas fa-plus"></i> Add City</button>
+
+<div class="row" style="margin-top: 10px;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="header-title">Display Cities</h4>
+                    <hr>
+
+                    <table id="datatable-buttons" class="table table-centered table-striped table-bordered mb-0 toggle-circle">
+                        <thead>
+                            <tr>
+                                <th>State Code</th>
+                                <th>State Name</th>
+                                <th> Delete</th>
+
+                            </tr>
+                        </thead>
+                    {% for s in slist %}
+
+                        <tbody>
+                            <tr>
+                                <td>{{ s.statecode }}</td>
+                                <td>{{ s.statename }}</td>
+                                <td><button class="btn btn-danger btn-xs btn-icon" onclick="citydel('{{s.id}}')"><i class="fa fa-times"></i></button></td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT START-----------------------------------
+=====================================================================================-->
+<form action="/addCity/"   method="POST">
+    {% csrf_token %}
+    <div id="con-close-modal-roleacm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Cities Of State</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="state" class="col-md-12 col-form-label">State:
+                        <span class="text-danger">*</span> </label>
+                            <div class="col-md-12">
+                                <select class="selectpicker" data-live-search="true" name="sid"  data-style="btn-light">
+                                    {% for s in slist %}
+                                    <option value="{{s.id}}">{{s.statename}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                    </div>
+                        <div class="col-md-6">
+                        <label for="Cityname" class="col-md-12 col-form-label">City Name:
+                                <span class="text-danger">*</span></label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="cityname"
+                                        name="cityname" placeholder="City Name">
+                                    </div>
+                        </div>
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light" id="UU">Save</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+{% endblock %}

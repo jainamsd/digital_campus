@@ -1,0 +1,111 @@
+{% extends 'admin/home.html' %}
+{% load static %}
+{% block A %}
+{%block script%}
+<script>
+function statedel(id)
+{
+   window.location.href="/statedel/?Id="+id;
+
+}
+</script>
+{%endblock%}
+ <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">State</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">State</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+<button type="button" class="round btn btn-outline-success waves-effect waves-light"
+    data-toggle="modal" data-target="#con-close-modal-roleacm" onclick="openmodel()">
+<i class="fas fa-plus"> Add State</i></button>
+
+
+
+<div class="row" style="margin-top: 10px;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="header-title">Display State</h4>
+                    <hr>
+
+                    <table id="datatable-buttons" class="table table-centered table-striped table-bordered mb-0 toggle-circle">
+                        <thead>
+                            <tr>
+                                <th>State Code</th>
+                                <th>State Name</th>
+                                <th>State Delete</th>
+                            </tr>
+                        </thead>
+                    {% for s in result %}
+                        <tbody>
+                            <tr>
+                                <td>{{ s.statecode }}</td>
+                                <td>{{ s.statename }}</td>
+                                <td><button class="btn btn-danger btn-xs btn-icon" onclick="statedel('{{s.id}}')"><i class="fa fa-times"></i></button></td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT START-----------------------------------
+=====================================================================================-->
+<form action="/addState/"   method="POST">
+    {% csrf_token %}
+    <div id="con-close-modal-roleacm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add More State</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="statecode" class="col-md-12 col-form-label">State Code:
+                            <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control" id="statecode"
+                                    name="statecode" placeholder="101">
+                                </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="statename" class="col-md-12 col-form-label">State Name:
+                            <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="statename"
+                                    name="statename" placeholder="State Name">
+                                </div>
+                    </div>
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+{% endblock %}

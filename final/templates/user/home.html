@@ -1,0 +1,965 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+{% load static %}
+
+<!-- Mirrored from demo.hasthemes.com/eduhas-preview/eduhas/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Apr 2020 12:29:19 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Digital Campus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/user/favicon.ico'%}">
+
+    <!-- CSS
+    ========================= -->
+    <link rel="stylesheet"
+          href="ttps://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/user/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css'%}">
+    <link href="{% static 'libs/dropzone/dropzone.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'libs/dropify/dropify.min.css' %}" rel="stylesheet" type="text/css"/>
+
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'css/user/plugins.css'%}">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/user/style.css'%}">
+
+    <!-- Modernizer JS -->
+    <script src="{% static 'js/pages/user/vendor/modernizr-3.6.0.min.js'%}"></script>
+</head>
+
+<body>
+
+<!-- Main Wrapper Start -->
+<div class="main-wrapper">
+
+    <header class="header-area">
+        <!-- header-top-area -->
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+
+                        <!-- top-contact-info -->
+                        <div class="top-contact-info">
+                            <ul>
+                                <li><a href="tel:012345676"><i class="zmdi zmdi-phone"></i> +98 558 547 589</a></li>
+                                <li><a href="mailto:education@ingo.com"><i class="zmdi zmdi-email"></i>digitalcampus@gmail.com</a>
+                                </li>
+                            </ul>
+                        </div><!--// top-contact-info -->
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="top-info-right">
+
+                            <!-- top-social -->
+                            <div class="top-social">
+                                <ul>
+                                    <li><a href="facebook.com/index.html"><i class="zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href="https://www.instagram.com/"><i class="zmdi zmdi-instagram"></i></a>
+                                    </li>
+                                    <li><a href="#"><i class="zmdi zmdi-rss"></i></a></li>
+                                </ul>
+                            </div><!--// top-social -->
+
+                            <!-- login-and-register -->
+                            <div class="login-and-register">
+                                <ul>
+                                    <li><a href="/login/">Login</a></li>
+
+                                </ul>
+                            </div><!--// login-and-register -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--// header-top-area -->
+
+        <div class="header-bottom-area header-sticky header-sticky">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-5 col-6">
+
+                        <!-- logo-area -->
+                        <div class="logo">
+                            <a href="/userinquiry/"><img src="{% static 'images/user/dig1.png'%}" alt=""></a>
+                        </div><!--// logo-area -->
+
+                    </div>
+
+                    <div class="col-lg-9 col-md-7 col-6">
+
+                        <div class="header-bottom-right">
+                            <!-- main-menu -->
+                            <div class="main-menu">
+                                <nav class="main-navigation">
+                                    <ul>
+                                        <li class="active"><a href=''> HOME</a>
+
+                                        </li>
+
+                                        <li><a href=''>ABOUT</a>
+
+                                        </li>
+
+                                        </li>
+                                        <li><a href="course-grid.html">COURSES</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/javalangdecription/">Java Programing </a></li>
+                                                <li><a href="/javalangdecription/">PHP Programing </a></li>
+                                                <li><a href="/nodejs/">Nodejs Programing </a></li>
+                                                <li><a href="/pythonlang/">Python Programing </a></li>
+                                                <li><a href="/CANDCPLUS/">C/C++ Programing </a></li>
+                                                <li><a href="/htmlandcss/">HTML/CSS Programing </a></li>
+                                                <li><a href="/devlopment/">WEB Devlopment</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">CONTACTUS</a>
+
+                                        </li>
+                                        <li class="active "><b>
+                                            <button class="btn btn-blue waves-effect waves-light" data-toggle="modal"
+                                                    data-target=".bd-example-modal-xl" onclick="openmodel()"> INQUIRY
+                                            </button>
+                                        </b></li>
+                                    </ul>
+                                </nav>
+                            </div><!--// main-menu -->
+
+                            <div class="mini-wrap-sidebar">
+
+                                <!-- mini-cart-wrap  -->
+                                <div class="mini-cart-wrap">
+
+
+                                    <!-- mini-cart-wrap -->
+                                    <div class="mini-cart-wrap">
+                                        <ul>
+                                            <!-- single-item -->
+                                            <li class="single-item">
+                                                <div class="product-img">
+                                                    <a href="#"><img src="{% static 'images/user/other/cart-01.jpg'%}"
+                                                                     alt=""></a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5><a href="#">This is product title hear one</a></h5>
+                                                    <div class="price-box">
+                                                        <span class="new-price">$55.21</span>
+                                                    </div>
+                                                    <div class="size">
+                                                        Size: S
+                                                    </div>
+                                                </div>
+                                                <div class="remove-from-cart">
+                                                    <a href="#" title="Remove"><i class="zmdi zmdi-delete"></i></a>
+                                                </div>
+                                            </li><!--// single-item -->
+
+                                            <!-- single-item -->
+                                            <li class="single-item">
+                                                <div class="product-img">
+                                                    <a href="#"><img src="{% static 'images/user/other/cart-02.jpg'%}"
+                                                                     alt=""></a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5><a href="#">This is product title hear two</a></h5>
+                                                    <div class="price-box">
+                                                        <span class="new-price">$55.21</span>
+                                                    </div>
+                                                    <div class="size">
+                                                        Size: S
+                                                    </div>
+                                                </div>
+                                                <div class="remove-from-cart">
+                                                    <a href="#" title="Remove"><i class="zmdi zmdi-delete"></i></a>
+                                                </div>
+                                            </li><!--// single-item -->
+                                            <li>
+                                                <!--  shopping-cart-total  -->
+                                                <div class="shopping-cart-total">
+                                                    <h5>Sub-Total : <span>$127.42</span></h5>
+                                                    <h5>Total : <span>$127.42</span></h5>
+                                                </div><!--//  shopping-cart-total  -->
+                                            </li>
+                                            <li>
+                                                <!-- shopping-cart-btn -->
+                                                <div class="shopping-cart-btn">
+                                                    <a href="checkout.html">Checkout</a>
+                                                </div><!--// shopping-cart-btn -->
+                                            </li>
+                                        </ul>
+                                    </div><!--// main-cart-wrap -->
+
+                                </div><!--// main-cart-wrap  -->
+
+                                <div class="search-wrap">
+                                    <button class="header-search-toggle"><i class="zmdi zmdi-search"></i></button>
+                                    <div class="header-search-form">
+                                        <form action="#">
+                                            <input type="text" placeholder="Type and hit enter">
+                                            <button><i class="zmdi zmdi-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <!-- mobile-menu start -->
+                        <div class="mobile-menu d-block d-lg-none"></div>
+                        <!-- mobile-menu end -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Hero Slider start -->
+    <div class="hero-slider">
+
+        <div class="hero-slider-active owl-carousel">
+
+            <div class="singleSlide" data-black-overlay="3">
+                <div class="itemBg">
+                    <img src="{% static 'images/akashgohilimg/bg1.jpg'%}" alt="">
+                </div>
+                <!-- Hero Content One Start -->
+                <div class="container">
+                    <div class="hero-content-one">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slider-text-info">
+                                    <h1><span>If You Learning Languages To </span> <br> Fill Inquiry Form </h1>
+                                    <a data-toggle="modal" data-target=".bd-example-modal-xl" onclick="openmodel()"
+                                       class="btn slider-btn uppercase" style="color:white;"><span>FILL INQUIRY FORM HERE</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Content One End -->
+            </div>
+
+            <div class="singleSlide" data-black-overlay="3">
+                <div class="itemBg">
+                    <img src="{% static 'images/akashgohilimg/bg2.jpg'%}" alt="">
+                </div>
+                <!-- Hero Content One Start -->
+                <div class="container">
+                    <div class="hero-content-one">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slider-text-info">
+                                    <h1><span>Modern Education </span> <br> For Everyone </h1>
+                                    <a data-toggle="modal" style="color:white;" data-target=".bd-example-modal-xl" onclick="openmodel()"  class="btn slider-btn uppercase"><span>FILL INQUIRY FORM HERE</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Content One End -->
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Hero Slider end -->
+
+    <!-- Our Course Categories Area -->
+    <div class="our-course-categories-area section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 ml-auto mr-auto">
+                    <!-- section-title -->
+                    <div class="section-title-three">
+                        <h4>WELCOME TO EDUCATION</h4>
+                        <h3>Our Course Categories</h3>
+                        <p>All Cources is belows</p>
+                    </div><!--// section-title -->
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="course-categories-wrap">
+
+                        <div class="coustom-col-2">
+                            <!-- single-course-categories -->
+                            <div class="single-course-categories malachite">
+                                <div class="item-inner">
+                                    <div class="cours-icon">
+                                        <a href="/javalangdecription/"> <img
+                                                src="{% static 'images/user/icon/icon-04.png'%}" alt=""></a>
+                                    </div>
+                                    <div class="cours-title">
+                                        <h5>JAVA</h5>
+                                    </div>
+                                </div>
+                            </div><!--// single-course-categories -->
+                        </div>
+
+                        <div class="coustom-col-2">
+                            <!-- single-course-categories -->
+                            <div class="single-course-categories sunglow">
+                                <div class="item-inner">
+                                    <div class="cours-icon">
+                                        <a href="/pythonlang/"><img src="{% static 'images/user/icon/icon-05.png'%}"
+                                                                    alt=""></a>
+                                    </div>
+                                    <div class="cours-title">
+                                        <h5>PYTHON</h5>
+                                    </div>
+                                </div>
+                            </div><!--// single-course-categories -->
+                        </div>
+
+                        <div class="coustom-col-2">
+                            <!-- single-course-categories -->
+                            <div class="single-course-categories mariner">
+                                <div class="item-inner">
+                                    <div class="cours-icon">
+                                        <img src="{% static 'images/user/icon/icon-04.png'%}" alt="">
+                                    </div>
+                                    <div class="cours-title">
+                                        <a href="/CANDCPLUS/"><h5>C AND C++</h5></a>
+                                    </div>
+                                </div>
+                            </div><!--// single-course-categories -->
+                        </div>
+
+                        <div class="coustom-col-2">
+                            <!-- single-course-categories -->
+                            <div class="single-course-categories brilliantrose">
+                                <div class="item-inner">
+                                    <div class="cours-icon">
+                                        <img src="{% static 'images/user/icon/icon-04.png'%}" alt="">
+                                    </div>
+                                    <div class="cours-title">
+                                        <a href="/htmlandcss/"><h5>HTML & CSS</h5></a>
+                                    </div>
+                                </div>
+                            </div><!--// single-course-categories -->
+                        </div>
+
+                        <div class="coustom-col-2">
+                            <!-- single-course-categories -->
+                            <div class="single-course-categories shakespeare">
+                                <div class="item-inner">
+                                    <div class="cours-icon">
+                                        <a href="/devlopment/"><img src="{% static 'images/user/icon/icon-05.png'%}"
+                                                                    alt=""></a>
+                                    </div>
+                                    <div class="cours-title">
+                                        <h5>Development</h5>
+                                    </div>
+                                </div>
+                            </div><!--// single-course-categories -->
+                        </div>
+
+                        <div class="coustom-col-2">
+                            <!-- single-course-categories -->
+                            <div class="single-course-categories deyork">
+                                <div class="item-inner">
+                                    <div class="cours-icon">
+                                        <a href="/nodejs/"> <img src="{% static 'images/user/icon/icon-05.png'%}"
+                                                                 alt=""></a>
+                                    </div>
+                                    <div class="cours-title">
+                                        <h5>NODEJS</h5>
+                                    </div>
+                                </div>
+                            </div><!--// single-course-categories -->
+                        </div>
+                        <br><br>
+                        <span><center>More information about courses to click button all courses</center></span>
+                        <div class="all-course-btn">
+
+                            <a href="course-grid.html" class="all-course">all course</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--// Our Course Categories Area -->
+
+    <!-- Why should Education Area -->
+    <div class="should-education-area section-ptb-160 should-bg" data-black-overlay="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8  ml-auto mr-auto">
+                    <div class="section-title">
+                        >
+                        <h3 class="text-white">THE TECHNOLOGY THAT WE USE</h3>
+                        <h6 class="text-white">We specialize in the training of Web & Design technologies.We follow
+                            industry standards and regularly update our courses as per industry demands to provide you
+                            with the best possible education.</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-choose-service -->
+                    <div class="single-choose-service text-center mt--30">
+                        <div class="service-icon">
+                            <img src="{% static 'images/user/java.png'%}" alt="">
+                            <img src="{% static 'images/user/html1.png'%}" alt="">
+                        </div>
+                    </div><!--// single-choose-service -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-choose-service -->
+                    <div class="single-choose-service text-center mt--30">
+                        <div class="service-icon">
+                            <img src="{% static 'images/user/python.jpg'%}" alt="">
+                            <img src="{% static 'images/user/an.png'%}" alt="">
+                        </div>
+
+                    </div><!--// single-choose-service -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-choose-service -->
+                    <div class="single-choose-service text-center mt--30">
+                        <div class="service-icon">
+                            <img src="{% static 'images/user/ionic.png'%}" alt="">
+                            <img src="{% static 'images/user/net.jpg'%}" alt="">
+                        </div>
+
+                    </div><!--// single-choose-service -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// Why should Education Area -->
+
+    <!-- Most Popular Courses Area -->
+    <div class="most-popular-courses-area section-ptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8  ml-auto mr-auto">
+                    <div class="section-title-two">
+                        <h4>why choose us</h4>
+                        <h3>Our Training Programs</h3>
+                        <h6>Career Courses:</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-courses -->
+                    <div class="single-popular-courses mt--30">
+                        <div class="popular-courses-image">
+                            <a href="#"><img src="{% static 'images/user/java1.jpg'%}" alt=""></a>
+                        </div>
+                        <div class="popular-courses-contnet">
+                            <h5>Java Training</h5>
+                            <div class="post_meta">
+                                <ul>
+                                    <li><a href="#">Computer Science</a></li>
+                                    <li><p>Duration : 1 Yr</p></li>
+                                </ul>
+                            </div>
+                            <p>For More Details of Java Training Fill Form</p>
+                            <div class="button-block">
+                                <a data-toggle="modal" data-target=".bd-example-modal-xl" class="botton-border">Fill
+                                    Inquiry From</a>
+                            </div>
+
+                        </div>
+                    </div><!--// single-courses -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-courses -->
+                    <div class="single-popular-courses mt--30">
+                        <div class="popular-courses-image"><br><br><br>
+                            <a href="#"><img src="{% static 'images/user/php.png'%}" alt=""></a>
+                        </div>
+                        <br>
+                        <div class="popular-courses-contnet">
+                            <h5>PHP Training</h5>
+                            <div class="post_meta">
+                                <ul>
+                                    <li><a href="#">Computer Science</a></li>
+                                    <li><p>Duration : 1 Yr</p></li>
+                                </ul>
+                            </div>
+                            <p>For More Details of PHP Training Fill Form</p>
+                            <div class="button-block">
+                                <a data-toggle="modal" data-target=".bd-example-modal-xl" onclick="openmodel()"
+                                   class="botton-border">Fill Inquiry From</a>
+                            </div>
+
+                        </div>
+                    </div><!--// single-courses -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-courses -->
+                    <div class="single-popular-courses mt--30">
+                        <div class="popular-courses-image"><br><br>
+                            <a href="#"><img src="{% static 'images/user/nodejs1.png'%}" alt=""></a>
+                        </div>
+                        <div class="popular-courses-contnet">
+                            <h5>Nodejs Training</h5>
+                            <div class="post_meta">
+                                <ul>
+                                    <li><a href="#">Computer Science</a></li>
+                                    <li><p>Duration : 1 Yr</p></li>
+                                </ul>
+                            </div>
+                            <p>For More Details of Nodejs Training Fill Form</p>
+                            <div class="button-block">
+                                <a data-toggle="modal" data-target=".bd-example-modal-xl" onclick="openmodel()"
+                                   class="botton-border">Fill Inquiry From</a>
+                            </div>
+
+                        </div>
+                    </div><!--// single-courses -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-courses -->
+                    <div class="single-popular-courses mt--30">
+                        <div class="popular-courses-image">
+                            <a href="#"><img src="{% static 'images/user/pyth1.jpg'%}" alt=""></a>
+                        </div>
+                        <div class="popular-courses-contnet">
+                            <h5>Python Training</h5>
+                            <div class="post_meta">
+                                <ul>
+                                    <li><a href="#">Computer Science</a></li>
+                                    <li><p>Duration : 1 Yr</p></li>
+                                </ul>
+                            </div>
+                            <p>For More Details of Python Training Fill Form</p>
+                            <div class="button-block">
+                                <a data-toggle="modal" data-target=".bd-example-modal-xl" onclick="openmodel()"
+                                   class="botton-border">Fill Inquiry From</a>
+                            </div>
+
+                        </div>
+                    </div><!--// single-courses -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-courses -->
+                    <div class="single-popular-courses mt--30">
+                        <div class="popular-courses-image">
+                            <a href="#"><img src="{% static 'images/user/and.png'%}" alt=""></a>
+                        </div>
+                        <div class="popular-courses-contnet">
+                            <h5>Android Training</h5>
+                            <div class="post_meta">
+                                <ul>
+                                    <li><a href="#">Computer Science</a></li>
+                                    <li><p>Duration : 1Yr</p></li>
+                                </ul>
+                            </div>
+                            <p>For More Details of Android Training Fill Form</p>
+                            <div class="button-block">
+                                <a data-toggle="modal" data-target=".bd-example-modal-xl" onclick="openmodel()"
+                                   class="botton-border">Fill Inquiry From</a>
+                            </div>
+
+                        </div>
+                    </div><!--// single-courses -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- single-courses -->
+                    <div class="single-popular-courses mt--30">
+                        <div class="popular-courses-image">
+                            <a href="#"><img src="{% static 'images/user/net2.png'%}" alt=""></a>
+                        </div>
+                        <div class="popular-courses-contnet">
+                            <h5>ASP .NET Training</h5>
+                            <div class="post_meta">
+                                <ul>
+                                    <li><a href="#">Computer Science</a></li>
+                                    <li><p>Duration : 1 Yr</p></li>
+                                </ul>
+                            </div>
+                            <p>For More Details of ASP .NET Training Fill Form</p>
+                            <div class="button-block">
+                                <a data-toggle="modal" data-target=".bd-example-modal-xl" onclick="openmodel()"
+                                   class="botton-border">Fill Inquiry From</a>
+                            </div>
+
+                        </div>
+                    </div><!--// single-courses -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--// Most Popular Courses Area -->
+
+
+    <footer class="footer-area">
+
+        <!-- Footer Top Area -->
+        <div class="footer-top section-pb section-pt-60">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 mt--60">
+                        <div class="footer-single-block">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="{% static 'images/user/dig1.png'%}" alt=""></a>
+                            </div>
+                            <p class="footer-dec">Our Technologies</p>
+                            <ul class="footer">
+                                <li style="color:white;">HTML 5 - CSS 3</li>
+                                <li style="color:white;">Php Development</li>
+                                <li style="color:white;">WordPress Development</li>
+                                <li style="color:white;">Java Development</li>
+                                <li style="color:white;">ASP .Net Development</li>
+                                <li style="color:white;">Android Application Development</li>
+                                <li style="color:white;">Python Development</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt--60">
+                        <div class="footer-single-block">
+
+                            <p class="footer-dec">Our Services</p>
+                            <ul class="footer">
+                                <li style="color:white;">Website Design and Development</li>
+                                <li style="color:white;">Enterprise Resource Planning Development</li>
+                                <li style="color:white;">Web Application Development</li>
+                                <li style="color:white;">E-Commerce Website Development</li>
+                                <li style="color:white;">Mobile Application Development</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-6 mt--60">
+                        <div class="footer-block">
+                            <h5>Get in Touch</h5>
+                            <ul class="footer-courses">
+                                <li style="color:white;"><a href="tel:012345676"><i class="zmdi zmdi-phone"></i> +98 558
+                                    547 589</a></li>
+                                <li style="color:white;"><a href="tel:012345676"><i class="fa fa-envelope"
+                                                                                    aria-hidden="true"></i>
+                                    Digital@gmail.com </a></li>
+                                <li style="color:white;"><a href="tel:012345676"><i class="fa fa-address-card-o"
+                                                                                    aria-hidden="true"></i> 424,GALA
+                                    EMPIRE,
+                                    OPP.DOOR-DARSHAN TOWER
+                                    Nr. SAL HOSPITAL,
+                                    S.G.HIGHWAY,THALTEJ,
+                                    AHMEDABAD.380052</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!--// Footer Top Area -->
+
+        <!-- Footer-bottom Area -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer">
+                            <div style="text-align:left;">
+                                <script type="text/javascript"
+                                        src="http://services.webestools.com/cpt_visitors/66301-11-4.js"></script>
+                            </div>
+                            <div class="copy-right pt--10 pb--10 text-center text-white">
+                                <p>Copyright© 2020 <a href="#">Digital Campus</a>, Designed by <span>AJ</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--// Footer-botton Area -->
+
+    </footer>
+    <!--// Footer Area -->
+
+</div>
+<!-- Main Wrapper End -->
+
+<!-- JS
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="{% static 'js/pages/user/vendor/jquery-3.3.1.min.js'%}"></script>
+<!-- Popper JS -->
+<script src="{% static 'js/pages/user/popper.min.js'%}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'js/pages/user/bootstrap.min.js'%}"></script>
+<!-- Plugins JS -->
+<script src="{% static 'js/pages/user/plugins.js'%}"></script>
+<!-- Ajax Mail -->
+<script src="{% static 'js/pages/user/ajax-mail.js'%}"></script>
+<!-- Main JS -->
+<script src="{% static 'js/pages/user/main.js'%}"></script>
+<script src="{% static 'libs/dropzone/dropzone.min.js' %}"></script>
+<script src="{% static 'libs/dropify/dropify.min.js' %}"></script>
+<script src="{% static 'js/pages/form-fileuploads.init.js' %}"></script>
+
+
+<script src="{% static 'js/pages/datatables.init.js' %}"></script>
+
+</body>
+
+
+</html>
+
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+
+<form action="/student_inquiry/" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-xl">
+
+            <div class="modal-content">
+                <br>
+                <div class="model-header" style="font-size:200%;">
+                    <center>Fill Inquiry Form</center>
+                </div>
+                <br>
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-md-3">
+                                <div class="dropify-wrapper border border-primary" style="height: 150px;">
+                                    <input type="file" name="studentphoto" class="dropify" required="">
+                                    <p> Student Photo</p>
+                                    <span>Upload here ...</span>
+                                </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="col-md-10 col-form-label">Full Name:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control border border-primary" data-validate="true" name="fullname"
+                                       placeholder="Enter Full Name Here" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pcontact" class="col-md-12 col-form-label">Personal Contact:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-12">
+                                <div class="input-group-append">
+                                    <input type="number" name="pnum" class="form-control border border-primary" id="contact"
+                                           placeholder="+91 12345 67890" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="Emailadrress" class="col-md-10 col-form-label">Email ID:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-10">
+                                <div class="input-group-append">
+                                    <input type="email" name="email" class="form-control border border-primary" id="emailaddress"
+                                           placeholder="example@gmail.com" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                                <label for="reffname" class="col-md-10 col-form-label">Refference Name:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-10">
+                                    <div class="input-group-append">
+                                        <input type="text" name="reffname" class="form-control border border-primary"
+                                               placeholder="Refference Name" required="">
+                                    </div>
+                                </div>
+                            </div>
+                    </div><br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="reffcontact" class="col-md-10 col-form-label">Refference Contact:
+                                    <span class="text-danger"></span></label>
+                                <div class="col-md-10">
+                                    <div class="input-group-append">
+                                        <input type="numbers" maxlength="13" name="reffcontact" class="form-control border border-primary"
+                                               id="reffcontact"
+                                               placeholder="+91 12345 67890"required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-8 col-form-label">Inquiry Date:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-9">
+                                    <div class="input-group-append">
+                                        <input type="date" name="inqdate" class="form-control border border-primary" placeholder="INQDATE" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-8 col-form-label">DOB:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-9">
+                                    <div class="input-group-append">
+                                        <input type="date" name="dob" class="form-control border border-primary"  >
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="university" class="col-md-10 col-form-label">Current University:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-10">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="University"
+                                            data-style="btn-light">
+                                        <option>Select Current University <i class="fa fa-caret-down" aria-hidden="true"></i></option>
+                                        <option>Gujarat Technological University</option>
+                                        <option>Nirma University</option>
+                                        <option>Pandit Dindayal Petrolium University</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Institute" class="col-md-12 col-form-label">Current Institute:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="Institute"
+                                            data-style="btn-light">
+                                        <option>Select Current Institute</option>
+                                        <option>L.J. Institute of technology</option>
+                                        <option>Institute of Technology</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="col-md-10 col-form-label  ">Languages for Inquiry:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-10 ">
+                                    <select class="selectpicker border border-primary " required="" data-live-search="true" name="lang">
+                                        <option>Select Languages</option>
+                                        {%for s in res%}
+                                        <option value="{{s.id}}">{{s.lang}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="sem" class="col-md-12 col-form-label">Current Semester:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="Semester"
+                                            data-style="btn-light">
+                                        <option>Select Current Semester</option>
+                                        <option>First</option>
+                                        <option>Second</option>
+                                        <option>Third</option>
+                                        <option>Forurth</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="stream" class="col-md-12 col-form-label">Current Stream:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="Stream"
+                                            data-style="btn-light">
+                                        <option>Select Current Stream</option>
+                                        <option>Diploma</option>
+                                        <option>Bachelor Degree(B.Tech)</option>
+                                        <option>Masters Degree(M.Tech)</option>
+                                        <option>Bachelor Of Computer Application</option>
+                                        <option>Masters Of Computer Application</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-12 col-form-label">Select Structures:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="structurename" data-style="btn-light">
+                                        <option>Select Structure to learning</option>
+                                        {%for s in ress%}
+                                        <option value="{{s.id}}">{{s.structurename}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="col-md-6 col-form-label">Select Typed of Training:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="TrainigTyped"
+                                            data-style="btn-light">
+                                        <option>Select Typed of Training</option>
+                                        {%for s in resu%}
+                                        <option value="{{s.id}}">{{s.TrainigTyped}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <div class="mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="icon-user icon-white"></i> Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+

@@ -1,0 +1,103 @@
+{% extends 'admin/home.html' %}
+{% block title %}
+		PROJECT | PRIVILEGE TO USER
+{% endblock %}
+{% block A %}
+
+<form action="/AddprivTouserACM/" method="POST">
+    {% csrf_token %}
+
+<div class="col-12" style="margin-top: 30px;">
+    <div class="card-box" style="padding: 40px;">
+        <h4 class="header-title">Assign Privilege To User</h4>
+        <p class="sub-header">
+        </p>
+        <hr>
+
+            <div class="row">
+            <div class="col-md-3" style="margin-bottom: 40px;">
+                <label for="roleid" class="col-md-12 col-form-label">Select Role:
+                <span class="text-danger">*</span> </label>
+                    <div class="col-md-12">
+                        <select name="roleid" class="selectpicker" data-live-search="true"  data-style="btn-light">
+                            <option>Select Role</option>
+                            {% for r in role %}
+                            <option value="{{r.id}}">{{r.role}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3" style="margin-bottom: 40px; margin-left: 30px;">
+                    <label for="roleid" class="col-md-12 col-form-label">Select User:
+                    <span class="text-danger">*</span> </label>
+                        <div class="col-md-12">
+                            <select name="userid" class="selectpicker" data-live-search="true"  data-style="btn-light">
+                                <option>Select User</option>
+                                {% for e in emp %}
+                                <option value="{{e.id}}">{{e.fullname}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                </div>
+            </div>
+
+
+        <div class="mb-2">
+            <div class="row">
+                <div class="col-12 text-sm-center form-inline">
+                    <div class="form-group mr-2">
+                        <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
+                            <option value="">Show all</option>
+                            <option value="active">Active</option>
+                            <option value="disabled">Disabled</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0" data-page-size="7">
+                <thead>
+                <tr>
+                    <th>Privilege Id</th>
+                    <th>Select Privilege</th>
+                    <th>Font Code</th>
+                </tr>
+                </thead>
+                {% for p in privilege %}
+                <tbody>
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td><input type="checkbox" name="privileges[]" value="{{ p.id }}"
+                        style="margin-right: 20px;">{{ p.privname }}</td>
+                    <td>{{ p.fontcode }}</td>
+                </tr>
+
+                </tbody>{% endfor %}
+                <tfoot>
+                <tr class="active">
+                    <td colspan="5">
+                        <div class="text-right">
+                            <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+            <div class="modal-footer" style="margin-top: 30px;">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Save Records
+                        <span class="btn-label-right"><i class="ti-save"></i></span>
+                    </button>
+                </div>
+        </div> <!-- end .table-responsive-->
+    </div> <!-- end card-box -->
+</div> <!-- end col -->
+</form>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+<!--<div id="preloader">-->
+<!--	<div id="status">-->
+<!--		<div class="spinner">Loading...</div>-->
+<!--	</div>-->
+<!--</div>-->
+
+
+{% load static %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"
+      xmlns="http://www.w3.org/1999/html">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+function myFunction() {
+  window.print();
+}
+</script>
+<style type="text/css">
+@media print {
+    #printbtn {
+        display :  none;
+    }
+}
+</style>
+
+
+<link href="{% static 'css/rec.css'%}" rel="stylesheet"/>
+
+
+
+<div id="invoice " class="border border-dark container" >
+    <input type="hidden" id="id" name="id">
+
+    <div class="toolbar hidden-print col px-md-5 ">
+        <div class="text-right"><br><br>
+            <button  onclick="myFunction()" id="printbtn" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
+            <button id="printbtn" class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
+        </div>
+        <hr>
+    </div>
+    <div class="invoice overflow-auto col px-md-5 ">
+        <div style="min-width: 600px" >
+            <header>
+                <div class="row ">
+                    <div class="col">
+                        <a target="_blank" href="" >
+                            <img src="{% static 'images/logo.png'%}"  style="height:50px;"   />
+                            </a>
+                    </div>
+                    <div class=" company-details border border-white ">
+                        <h2 class="name">
+
+                            <h6>Email Id:info@hntechno.com
+                                <div>424 Gala Empire,
+                                    <div>Opp. Door-darshan Tower,</div>
+                                    <div>S.G.Highway,</div>
+                                    <div>Thaltej</div>
+                                    <div>Ahmedabad-380052</div>
+                                    <div>Contact:9173026598</div>
+                            </h6>
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+
+                <div class="row contacts">
+                    <h class="col invoice-to">
+                        <div><b>Date: {% now "jS F Y " %}</b></div>
+                        <div><b>Ahmedabad</b></div>
+
+                        <div class="email"><a href="">{% for s in result %} {{ s.email }}{% endfor %}</a></div>
+                    </div>
+                <header><center><h3><u>Sub: Training Certificate</u></h3></center></header>
+
+                       <p><center>This is to inform whomsoever it may concern and certify that<b>{% for s in result %} {{ s.fullname }}{% endfor %}</b>
+            has worked as a Trainee Of <b>{% for s in result %}  {{ s.lang.lang }} {% endfor %}</b> Language at HN Techno since <b> 15th May,2019 till Date: {% now "jS F Y " %}</b>.</center></p>
+            <p><center>He has successfully completed the Phase-I & Phase-II of Training.</center></p>
+            <p><center>He demonstrated good skill with a self motivated attitude to learn new things.</center></p>
+                        <p><center>The company will not provide any type of source Code out side the premises. The
+            management wish them good luck for future.</center></p>
+
+                    </div>
+            <br>
+            <br>
+
+                        <div class="float-right"><b>Regards,For Hntechno</b></div><br>
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><span class="float-right">============================</span><br>
+
+                        <div class="float-right"><b>Vijay Prajapati(CEO and Founder)</b></div><br>
+
+
+                </div>
+
+
+            </main>
+            <footer>
+                <div><center>===================================================================================</center></div>
+
+                <center>Deal in Web site designing and Development.</center><br>
+            </footer>
+        </div>
+        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+        <div></div>
+    </div>
+</div>

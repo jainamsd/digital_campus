@@ -1,0 +1,199 @@
+{%load static%}
+<title>{%block title%} ADMIN {%endblock%}</title>
+<!-- App css -->
+<link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/icons.min.css'%}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/app.min.css'%}" rel="stylesheet" type="text/css"/>
+
+
+<form action="#" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="col-12"><br><br>
+        <div class="card-box">
+            <!-- Logo & title -->
+            <div class="clearfix">
+                <div class="float-left">
+                    {% for s in result %}
+                    <img src="{% static 'images/logo.png'%}" alt="" height="50px;">
+                </div>
+                <div class="float-right">
+                    <h4 class="m-0 d-print-none">Receipt</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mt-3">
+                        <h1><b>Hello, {{s.fullname}}</b></h1>
+                        <p class="text-muted">Thank you for joining us! </p>
+                    </div>
+
+                </div><!-- end col -->
+                <div class="col-md-4 offset-md-2">
+                    <div class="mt-3 float-right">
+                        <p class="m-b-10"><strong>Date : </strong> <span class="float-right"> &nbsp;&nbsp;&nbsp;&nbsp;  {% now "jS F Y 	" %}    </span>
+                        </p>
+                        <p class="m-b-10"><strong>Status : </strong> <span class="float-right"><span
+                                class="badge badge-danger"> {{s.status}} </span></span></p>
+                        <p class="m-b-5"><strong>No : </strong> <span class="">#{{ s.id }}</span></p>
+                    </div>
+                </div><!-- end col -->
+            </div>
+            <!-- end row -->
+
+            <div class="row mt-3 ">
+                <div class="col-sm-6 float-right">
+                    <h6>Company Address</h6>
+                    <address>
+                        Vijay Prajapati<br>
+                        424,Gala Empire,Ahmedabad,<br>
+                        Gujarat 380052<br>
+                        <abbr title="Phone">P:</abbr> (+91) 091730 26598<br>
+                        <abbr title="email">Email:</abbr> abc@gmail.com
+                    </address>
+                </div> <!-- end col -->
+
+                <!--            <div class="col-sm-6 ">-->
+                <!--                <h6>Company Address</h6>-->
+                <!--                <address>-->
+                <!--                    Vijay Prajapati<br>-->
+                <!--                    424,Gala Empire,Ahmedabad,<br>-->
+                <!--                    Gujarat 380052<br>-->
+                <!--                    <abbr title="Phone">P:</abbr> (+91) 091730 26598<br>-->
+                <!--                    <abbr title="email">Email:</abbr> abc@gmail.com-->
+                <!--                </address>-->
+                <!--            </div> &lt;!&ndash; end col &ndash;&gt;-->
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table mt-4 table-centered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>LANGUAGE</th>
+                                <th style="width: 10%">PRICE</th>
+                                <th style="width: 10%"></th>
+                                <th style="width: 10%" class="text-right">TOTAL</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <b>{{ s.lang.lang }}</b> <br/>
+                                </td>
+                                <td>{{ s.price.price }}</td>
+                                <td></td>
+                                <td class="text-right" id="demo"> + GST</td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div> <!-- end table-responsive -->
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <!--                            <div class="thanks">Thank you!</div>-->
+                    <div class="clearfix pt-5"><br><br><br><br>
+
+                        <h6 class="text-muted">Notes:</h6>
+
+                        <small class="text-muted">
+                            I have been informed that the amount I am paying towards the training of {{ s.lang.lang }} is non-refundable and I will not claim any refund in future for the amount I have paid.
+                        </small>
+                    </div>
+                </div> <!-- end col -->
+                <div class="col-sm-6">
+                    <div class="float-right">
+                        <p><b>18% Tax = </b> <span id="demo2"
+                                                   class="float-right"> ₹ {{ s.price.price }} + 18% Tax</span></p>
+                        <!--                    <p ><b>Total</b> <span class="float-right"> &nbsp;&nbsp;&nbsp; </span></p>-->
+                        <h3><b>Total: </b>₹<span id="demo3"></span></h3>
+                    </div>
+                    <br><br>
+                    <div class="clearfix"></div>
+                </div> <!-- end col -->
+            </div>
+            <br><br><br><br>
+            <!-- end row -->
+            <footer>
+                Invoice was generated on a computer and is valid without the signature and seal.
+            </footer>
+            <div class="mt-4 mb-1">
+                <div class="text-right d-print-none">
+                    <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-printer mr-1"></i> Print</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Send Mail</button>
+                </div>
+            </div>
+        </div> <!-- end card-box -->
+        {%endfor%}
+    </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+</form>
+
+<script>
+{% for s in result %}
+var1 = {{ s.price.price }};
+var2 = ({{ s.price.price }}*18)/100
+var3 = var1+var2
+document.getElementById("demo").innerHTML = var1;
+document.getElementById("demo2").innerHTML = var2;
+document.getElementById("demo3").innerHTML =var3;
+{% endfor %}
+
+</script>
+<!-- Vendor js -->
+<script src="{% static 'js/vendor.min.js'%}"></script>
+
+<!-- App js-->
+<script src="{% static 'js/app.min.js'%}"></script>
+
+
+
+<!--======================= mail mate no Modal ========================================================-->
+<form action="/sendmail/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Send Mail</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                 <div>
+                    {% for s in result%}
+                        Email:<input type="text" class="form-control" name="email" value="{{s.email}}">
+                    {%endfor%}
+                </div><br>
+                <div>
+                     Subject:<input type="text" class="form-control" name="subject"  placeholder="Subject">
+                </div><br>
+                <div>
+                     <label>Message:</label>
+                    <textarea  name="message" placeholder="Enter Message For Mail"  class="form-control"></textarea>
+                </div><br>
+                <div>
+                    File:<span> </span><input type="file" name="file">
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Send Mail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+
+<!------------------------------------------mail mate no model end -------------------------------------------------------->
+
+
+

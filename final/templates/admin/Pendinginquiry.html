@@ -1,0 +1,155 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+{% load static %}
+{% block A %}
+
+
+
+<!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pending Inquiry</a></li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Pending Students Details</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Pending Inquiry </h4>
+                <!--            <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>-->
+                <table data-toggle="table" id="datatable-buttons" class="table table-bordered text-center">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Reffernce Name</th>
+                        <th>DOB</th>
+                        <th>Date</th>
+                        <th>Institute</th>
+                        <th>Sem</th>
+                        <th>Stream</th>
+                        <th>Language</th>
+                        <th>Structure</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                        <th>Delete</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for s in result %}
+                    <tr class="text-capitalize">
+                        <td>{{s.id}}</td>
+                        <td class="table-user">{{s.fullname}}<img src="/media/{{s.studentphoto }}"
+                                                                  class="rounded-circle avatar-sm" alt="studentphoto">
+                        </td>
+                        <td>{{s.pnum}}</td>
+                        <td>{{s.email}}</td>
+                        <td>{{s.reffname}}</td>
+                        <td>{{s.dob}}</td>
+                        <td>{{s.inqdate}}</td>
+                        <td>{{s.Institute}}</td>
+                        <td>{{s.Semester}}</td>
+                        <td>{{s.Stream}}</td>
+                        <td>{{s.lang.lang}}</td>
+                        <td>{{s.structurename.structurename}}</td>
+                        <td><span class="badge label-table badge-danger" style="font-size:120%;">{{s.status}}</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-xs btn-icon" name="pending"
+                                    title="Click the Button To Confirm it.." data-plugin="tippy"
+                                    data-tippy-animation="perspective" data-tippy-arrow="true"
+                                    onclick="con({{ s.id }})"><i class="fas fa-align-justify"></i></button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-xs btn-icon"
+                                    onclick="pendingdelete('{{s.id}}')"><i class="fa fa-times"></i></button>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                    </tbody>
+                </table>
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>
+<!-- end row-->
+<script>
+function con(id)
+{
+Swal.fire({
+  title: 'Are you sure?',
+  text: 'You want to confirm inquiry or not!!!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, confirm',
+  cancelButtonText: 'No, cancel'
+}).then((result) => {
+  if (result.value) {
+    window.location.href="/coninq/?id="+id;
+
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    window.location.href="/caninq/?id="+id;
+    Swal.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+}
+</script>
+
+
+            <script>
+                function pendingdelete(id){
+                    window.location.href="/pendelete/?id="+id;
+                }
+            </script>
+
+
+<!--<script>-->
+<!--            function con(id){-->
+<!--              swal({-->
+<!--              title: "Are you sure?",-->
+<!--              text: "You will not be able to recover this imaginary file!",-->
+<!--              type: "warning",-->
+<!--              showCancelButton: true,-->
+<!--              confirmButtonClass: "btn-danger",-->
+<!--              confirmButtonText: "Yes, delete it!",-->
+<!--              cancelButtonText: "No, cancel plx!",-->
+<!--              closeOnConfirm: false,-->
+<!--              closeOnCancel: false-->
+<!--            },-->
+<!--            function(isConfirm) {-->
+<!--              if (isConfirm) {-->
+<!--                window.location.href="/coninq/?id="+id;-->
+<!--              } else {-->
+<!--               window.location.href="/caninq/?id="+id;-->
+<!--              }-->
+<!--            });-->
+<!--            }-->
+<!--            </script>-->
+
+
+
+
+{% endblock %}

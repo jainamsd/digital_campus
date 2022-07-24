@@ -1,0 +1,133 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% block A %}
+{% load static %}
+
+<script type="text/javascript">
+    function getprivRole(id)
+    {
+        $.ajax({
+            method:'POST',
+            url:'/getpriv/',
+            data:{'pid':id,csrfmiddlewaretoken: '{{ csrf_token }}'},
+            datType:'JSON',
+            success:function(getResponse)
+            {
+                getPrivilege = getResponse.Plist;
+                var checkboxes = document.getElementsByName("privileges[]");
+                for (var i=0; i<checkboxes.length; i++)
+                {
+                   checkboxes[i].checked=false;
+                }
+                for (var i=0; i<checkboxes.length; i++) {
+                if (getPrivilege.includes(checkboxes[i].value)) {
+                   checkboxes[i].checked=true;
+                }
+                }
+            }
+        })
+    }
+</script>
+
+
+<form action="/AddprivToroleACM/" method="POST">
+    {% csrf_token %}
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM Privilege To Role</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">ACM Privilege To Role</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+
+<div class="col-12" style="margin-top: 30px;">
+    <div class="card-box" style="padding: 40px;">
+        <h4 class="header-title">Assign Privilege To Role</h4>
+        <p class="sub-header">
+        </p>
+        <hr>
+
+        <div class="col-md-3" style="margin-bottom: 40px;">
+                <label  class="col-md-12 col-form-label">Select Role:
+                <span class="text-danger">*</span> </label>
+                    <div class="col-md-12">
+                        <select name="roleid" onchange="getprivRole(this.value)" class="selectpicker" data-live-search="true"  data-style="btn-light">
+                            <option>Select Role</option>
+                            {% for r in role %}
+                            <option value="{{r.id}}">{{r.role}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+            </div>
+
+        <div class="mb-2">
+            <div class="row">
+                <div class="col-12 text-sm-center form-inline">
+                    <div class="form-group mr-2">
+                        <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
+                            <option value="">Show all</option>
+                            <option value="active">Active</option>
+                            <option value="disabled">Disabled</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input id="demo-foo-search" type="text" placeholder="Search" class="form-control form-control-sm" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table id="demo-foo-filtering" class="table table-centered table-striped table-bordered mb-0 toggle-circle" data-page-size="7">
+                <thead>
+                <tr>
+                    <th>Privilege Id</th>
+                    <th>Select Privilege</th>
+                    <th>Font Code</th>
+                </tr>
+                </thead>
+                {% for p in privilege %}
+                <tbody>
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td><input type="checkbox" name="privileges[]" value="{{ p.id }}"
+                        style="margin-right: 20px;">{{ p.privname }}</td>
+                    <td>{{ p.fontcode }}</td>
+                </tr>
+
+                </tbody>{% endfor %}
+                <tfoot>
+                <tr class="active">
+                    <td colspan="5">
+                        <div class="text-right">
+                            <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+            <div class="modal-footer" style="margin-top: 30px;">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Save Records
+                        <span class="btn-label-right"><i class="ti-save"></i></span>
+                    </button>
+                </div>
+        </div> <!-- end .table-responsive-->
+    </div> <!-- end card-box -->
+</div> <!-- end col -->
+</form>
+ {% endblock %}

@@ -1,0 +1,263 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+{% load static %}
+{% block A %}
+
+
+
+<!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Student Closed</a></li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Completed or Closed Students Details</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+<div class="row">
+
+
+    <div class="col-sm-12">
+        <div class="card-box">
+
+            <h4 class="header-title">Completed or Closed Student </h4>
+
+
+<!--            <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>-->
+            <table id="demo-custom-toolbar" data-toggle="table"
+                   data-toolbar="#demo-delete-row"
+                   data-search="true"
+                   data-show-refresh="true"
+                   data-show-columns="true"
+                   data-sort-name="id"
+                   data-page-list="[5, 10, 20]"
+                   data-page-size="5"
+                   data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
+                <thead class="thead-light">
+                <tr>
+
+                    <th data-field="name" data-sortable="true">Name</th>
+                    <th data-field="number" data-sortable="true">Contact No.</th>
+                    <th data-field="email" data-sortable="true">Email</th>
+                    <th data-field="ref name" data-sortable="true">Reffernce Name</th>
+                    <th data-field="date1" data-sortable="true">Date</th>
+                    <th data-field="inst" data-sortable="true">Institute</th>
+                    <th data-field="sem" data-sortable="true">Sem</th>
+                    <th data-field="stream" data-sortable="true">Stream</th>
+                    <th data-field="Structure" data-sortable="true">Structure</th>
+                    <th data-field="language" data-sortable="true">Language</th>
+                    <th data-field="Price" data-sortable="true">Price</th>
+                    <th data-field="installment" data-sortable="true">installment</th>
+<!--                    <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>-->
+<!--                    <th data-field="rec">Receipt</th>-->
+<!--                    <th data-field="sendmessage">SMS Registered</th>-->
+                    <th data-field="state">Delete</th>
+                    <th data-field="admintcard">Admit Card </th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for s in results %}
+                <tr>
+
+                    <td><center>{{ s.fullname }} </center></td>
+<!--                    <td><img src="/media/{{s.inq.studentphoto }}" class="rounded-circle avatar-sm" alt=""></td>-->
+                    <td><center>{{ s.pnum }}</center></td>
+                    <td><center>{{ s.email }}</center></td>
+                    <td><center>{{ s.reffname }}</center></td>
+                    <td><center>{{ s.date1 }}</center></td>
+                    <td><center>{{ s.Institute }}</center></td>
+                    <td><center>{{ s.Semester }}</center></td>
+                    <td><center>{{ s.Stream }}</center></td>
+                    <td><center>{{ s.structurename.structurename}}</center></td>
+                    <td><center>{{ s.lang.lang }} <img src=" /media/{{s.lang.langimg }}" class="rounded-circle avatar-sm" alt="languageimg"></center></td>
+                    <td><center>{{s.price.price}}</center></td>
+                    <td><center>{{s.installment}}</center></td>
+<!--                    <td><button name="registered" class="btn btn-danger" onclick="closee('{{s.id}}')">Registered</button></td>-->
+<!--                    <td><button name="rec" class="btn btn-dark" onclick="root('{{s.id}}')">Receipt</button></td>-->
+<!--                    <td><button class="btn btn-danger btn-xs btn-icon" onclick="Send_Message('{{s.id}}')"><i class="fa fa-envelope" aria-hidden="true" style="font-size:20px;"></i><span style="font-size:20px;">SMS</span></button></td>-->
+                    <td><button class="btn btn-danger btn-xs btn-icon" onclick="badboy('{{s.id}}')"><i class="fa fa-times"></i></button></td>
+                    <td><button class="btn btn-primary" data-toggle="modal"   data-target="#con-close-modal-roleacm" ><i class="fas fa-id-card"></i></button></td>
+                </tr>
+                 {%endfor%}
+                </tbody>
+            </table>
+        </div> <!-- end card-box-->
+    </div> <!-- end col-->
+</div>
+<!-- end row-->
+
+<!--// registered data ne message send karva ke inquiry tamari registred thai gai che-->
+<script>
+function Send_Message(id)
+{
+   window.location.href="/sendmessagefor_registered/?id="+id;
+}
+</script>
+
+<script>
+function badboy(id)
+{
+   window.location.href="/regidelete1/?id="+id;
+}
+</script>
+
+
+<script>
+    function sd(id)
+{
+Swal.fire({
+  title: 'Are you sure?',
+  text: 'You will not be able to recover this imaginary file!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, keep it'
+}).then((result) => {
+  if (result.value) {
+   window.location.href="/cr_user/?id="+id;
+
+
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+}
+</script>
+
+<script>
+function closee(id)
+{
+Swal.fire({
+  title: 'Are you sure?',
+  text: 'You will not be able to recover this imaginary file!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, keep it'
+}).then((result) => {
+  if (result.value) {
+   window.location.href="/clos/?id="+id;
+
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+}
+</script>
+
+
+
+
+
+<!--//receipt mate-->
+<script>
+function root(id)
+{
+Swal.fire({
+  title: 'Are you sure?',
+  text: 'You will not be able to recover this imaginary file!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, keep it'
+}).then((result) => {
+  if (result.value) {
+   window.location.href="/rec_getdata/?id="+id;
+
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+}
+</script>
+<script>
+    function print(){
+        window.print();
+    }
+</script>
+
+<script>
+    function costore(id){
+        window.location.href="/clostoreq/?id="+id;
+    }
+</script>
+
+    <div id="con-close-modal-roleacm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Admit Card</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <button type="button" onclick="print()">Print</button>
+                    <div class="card-box text-center">
+                            <img src="{% static 'images/admit.png'%}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+
+                            {% for s in results %}
+                            <h2 class="mb-0">{{s.fullname}}</h2><br>
+                            <button name="registered" class="btn btn-success btn-xs waves-effect mb-2 waves-light" onclick="costore('{{s.id}}')">Student Closed</button>
+                            <br><br>
+                            <button type="button" name="rec"  onclick="root('{{s.id}}')" class="btn btn-success btn-xs waves-effect mb-2 waves-light" disabled>Receipt</button>
+                            <button type="button" onclick="Send_Message('{{s.id}}')" class="btn btn-danger btn-xs waves-effect mb-2 waves-light" disabled>Send Message</button>
+
+                            <div class="text-left mt-5">
+
+                                <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{s.fullname}}</span></p>
+
+                                <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">{{s.pnum}}</span></p>
+
+                                <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{s.email}}</span></p>
+
+                                <p class="text-muted mb-1 font-13"><strong>Language :</strong> <span class="ml-2">{{s.lang.lang}}<img src=" /media/{{s.lang.langimg }}" class="rounded-circle avatar-sm" alt="languageimg"> </span></p>
+                            </div>
+
+
+                        {%endfor%}
+                        </div> <!-- end card-box -->
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% block A %}
+
+<!--====================================================================================
+-----------------------------------MODEL CONTENT START-----------------------------------
+=====================================================================================-->
+<form action="/addPrivComponentACM/" method="POST">
+    {% csrf_token %}
+     <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM Privilege Component</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">ACM Privilege Component</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+    <div class="row">
+        <div class="col-md-12" style="padding: 10px;">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="header-title">Privilege's Components Details</h3>
+
+                    <hr>
+
+                    <div class="row" style="margin-bottom: 30px; margin-top: 10px; margin-left: 30px;">
+
+                    <div class="col-md-3">
+                    <label for="privilege" class="col-md-12 col-form-label">Select Assigned Privilege:
+                    <span class="text-danger">*</span></label>
+                        <div class="col-md-12">
+                            <select class="selectpicker" name="privid" data-live-search="true" data-style="btn-light">
+                                <option>Select Privilege</option>
+                                {% for p in plist %}
+                                <option value="{{p.id}}">{{p.privname}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    </div> <!-- <end row> -->
+
+                    <table id="tblCustomers" style=" width: 100%; border-collapse: inherit;padding-right: 80px;
+                        padding-left: 80px;"
+                    class="table table-centered table-striped table-bordered mb-0 toggle-circle">
+                        <thead>
+                            <tr>
+                                <th>Component Name</th>
+                                <th>Component Link</th>
+                                <th>Action Follows</th>
+                            </tr>
+                        </thead>
+                        <tbody id="acmtheBody">
+
+
+                        </tbody>
+                    </table>
+
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <button type="button" onclick="addRow()" class="btn btn-secondary waves-effect waves-light float-right">
+                                    <span class="btn-label"><i class="fas fa-plus"></i></span>Add Row
+                                </button>
+                             </div>
+
+                                <button type="submit"  class="btn btn-primary waves-effect waves-light float-right">
+                                <span class="btn-label"><i class="ti-save"></i></span>Save Records
+                                </button>
+                        </div>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+    <!-- end row-->
+</form>
+
+
+<script type="text/javascript">
+var count=1;
+var nrow=2;
+function addRow()
+{
+
+var tBody=document.getElementById('acmtheBody');
+var newRow=document.createElement('tr');
+var col1=document.createElement('td');
+var col2=document.createElement('td');
+
+var col4=document.createElement('td');
+var rA=document.createElement('a');
+
+rA.style.color = "#335A85";
+
+newRow.setAttribute('id','n' + count);
+
+var img= document.createElement('IMG');
+img.setAttribute("src", "https://img.icons8.com/nolan/64/delete-forever.png");
+img.style.height="25px";
+img.style.width="25px";
+
+rA.setAttribute('href','javaScript:removeRow(\'n'+ count +'\')');
+rA.appendChild(img);
+
+var element1=document.createElement('input');
+element1.type="text";
+element1.placeholder="Component Name";
+element1.name="privCompName[]";
+element1.id="empCompName"+count;
+element1.className="form-control";
+element1.setAttribute("required","true");
+
+var element2=document.createElement('input');
+element2.type="text";
+element2.placeholder="Component Link";
+element2.name="privCompLink[]";
+element2.id="empCompLink"+count;
+element2.className="form-control";
+element2.setAttribute("required","true");
+
+col1.appendChild(element1);
+col2.appendChild(element2);
+
+col4.appendChild(rA);
+
+newRow.appendChild(col1);
+newRow.appendChild(col2);
+
+newRow.appendChild(col4);
+
+tBody.appendChild(newRow);
+
+count++;
+nRow++;
+
+}
+
+function removeRow(rowId){
+var tBody=document.getElementById("acmtheBody");
+tBody.removeChild(document.getElementById(rowId));
+nRow--;
+}
+</script>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+{% endblock %}

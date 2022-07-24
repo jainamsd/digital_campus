@@ -1,0 +1,108 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% block A %}
+
+ <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">ACM Privilege</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">ACM Privilege Details</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+
+<div class="row" style="margin-top: 10px;">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <button id="demo-btn-addrow" class="btn btn-primary" data-animation="sign" data-plugin="custommodal"  data-toggle="modal" data-target="#con-close-modal-acmprivilege"><i class="mdi mdi-plus-circle mr-2"  ></i> Add Privilege</button>
+<!--                    <br><h4 class="header-title">ACM Privilege Details</h4>-->
+                    <hr>
+                    <table id="datatable-buttons" class="table table-centered table-striped table-bordered mb-0 toggle-circle">
+
+                        <thead>
+                            <tr>
+                                <th><center>Privilege Id</center></th>
+                                <th><center>Privilege Name</center></th>
+                                <th><center>Font Code</center></th>
+                                <th><center>Delete</center></th>
+                            </tr>
+                        </thead>
+                        {% for s in results %}
+                        <tbody>
+                            <tr>
+                                <td><center>{{ s.id }}</center></td>
+                                <td><center>{{ s.privname }}</center></td>
+                                <td><center>{{ s.fontcode }}</center></td>
+                                <td class="text-center"><button class="btn btn-danger btn-xs btn-icon" onclick="privelegedelete('{{s.id}}')"><i class="fa fa-times"></i></button></td>
+
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT START-----------------------------------
+=====================================================================================-->
+<form action="/addPrivilegeACM/" method="POST">
+    {% csrf_token %}
+
+    <div id="con-close-modal-acmprivilege" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Privileges</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Privilege Name</label>
+                                <input type="text" name="privname" class="form-control" id="field-1" placeholder="Privilege Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-2" class="control-label">Font Code</label>
+                                <input type="text" name="fontcode" class="form-control" id="field-2" placeholder="Font Coderthemes">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">
+                        <span class="btn-label"><i class="fas fa-times-circle"></i></span>Close
+                    </button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Save
+                        <span class="btn-label-right"><i class="ti-save"></i></span>
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+{% endblock %}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<div id="preloader">
+	<div id="status">
+		<div class="spinner"></div>
+	</div>
+</div>
+{% load static %}
+
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Admin Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="https://coderthemes.com/ubold/layouts/assets/images/favicon.ico">
+        <link href="{% static 'css/bootstrap.min.css '%}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/icons.min.css '%}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/app.min.css '%}" rel="stylesheet" type="text/css" />
+    </head>
+    <body class="authentication-bg authentication-bg-pattern ">
+        <div class="account-pages mt-4 mb-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-lg-3 col-xl-5">
+                        <div class="card bg-pattern" style="opacity: 1;">
+                            <div class="card-body p-4">
+
+                                <div class="text-center w-75 m-auto">
+                                    <a href="login.html">
+                                        <span><img src="{% static 'images/ak.png '%}"></span>
+                                    </a>
+                                </div>
+
+<!--normal usrl logininsert-->
+<!--                                jayare acm user thi handle carvu hoy tto aa url nakhavi    insetacmdata-->
+
+                                <form action="/logininsert/" method="POST">
+<!--                                    <script> alert('{{msg}}')</script>-->
+                                    <span style="color: red; "> {{msg}} </span>
+                                    {% csrf_token %}
+                                    <div class="form-group mb-3">
+                                        <label for="emailaddress">Username:</label>
+                                        <input class="form-control" name="email" type="text"   id="emailaddress" placeholder="Enter your email or Username">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="password">Password:</label>
+                                        <input class="form-control" name="password" type="password"  id="password" placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center ">
+                                        <button   class="btn btn-primary btn-block" type="submit"> Log In </button><br><spans>Or</spans>  <br>
+<!--                                        face login mate-->
+                                        <button  class="btn btn-primary "><a href="\detect\" class="" style="color:white;" >Face Login </a></button>
+<!--                                                <button   class="btn btn-primary btn-block" type="submit" id="ImageHosting" value="To Image Hosting" onclick="ImageHosting_Click()"> Log In </button>-->
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <br>
+<!--                                        <a href="#" class="text-muted font-13 float-right"><span style="color:blue;">Forgot your password</span></a>-->
+                                                    <a href="/crete_new_user/" class="text-muted font-13 float-left" ><span style="color:blue;">Create User</span></a>
+<!--                                                    <a href="/newuserface/" class="text-muted font-13 float-right" ><span style="color:blue;">Create User with Face</span></a>-->
+
+                                    </div>
+
+                                </form>
+
+
+
+
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+
+<!--        password reset nu models-->
+
+
+
+
+
+        <!-- Vendor js -->
+        <script src="{% static 'js/vendor.min.js '%}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'js/app.min.js '%}"></script>
+        <script>
+        $("#ImageHosting").click(function() {
+                 alert("{{msg}}");
+         });
+
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    </body>
+
+<!-- Mirrored from coderthemes.com/ubold/layouts/light-horizontal/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 09:50:28 GMT -->
+</html>

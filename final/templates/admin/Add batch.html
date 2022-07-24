@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+{% load static %}
+{% block A %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title> BATCH </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Batch</a></li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Batch Details</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <div class="mb-2">
+                        <div class="row">
+                            <div class="col-12 text-sm-center form-inline">
+                                <div class="form-group mr-2">
+                                    <button id="demo-btn-addrow" class="btn btn-primary" data-toggle="modal"
+                                            data-animation="sign" data-plugin="custommodal"
+                                            data-target="#con-close-modal-roleacm" onclick="openmodel()"><i
+                                            class="mdi mdi-plus-circle mr-2"></i> Add Batch
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <input id="demo-input-search2" type="text" placeholder="Search" class="form-control"
+                                           autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-centered table-striped table-bordered mb-0 toggle-circle"
+                           data-page-size="7">
+                        <thead>
+                        <tr>
+                            <th data-field="state" data-checkbox="true">Id</th>
+                            <th data-field="lang" data-sortable="true">Language</th>
+                            <th data-field="batch" data-sortable="true">Batch</th>
+                            <th data-field="time1" data-sortable="true">Starting Time</th>
+                            <th data-field="time2" data-sortable="true">Ending Time</th>
+                            <th data-field="Day" data-sortable="true">Day</th>
+                            <th data-field="delete" data-sortable="true">Delete</th>
+                            <th data-field="Batchcancle" data-sortable="true">Batch Cancle For Today</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for s in res %}
+                        <tr>
+                            <td>{{s.id}}</td>
+                            <td>{{ s.lang.lang }}  <img src=" /media/{{s.lang.langimg }}"
+                                                                            class="rounded-circle avatar-sm"
+                                                                            alt="languageimg">
+                            </td>
+                            <td>{{ s.batch }}</td>
+                            <td>{{ s.time1 }}</td>
+                            <td>{{ s.time2 }}</td>
+                            <td>{{ s.day }}</td>
+                            <td>
+                                <button class="btn btn-danger btn-xs btn-icon" onclick="batchdelete('{{s.id}}')"><i
+                                        class="fa fa-times"></i></button>
+                            </td>
+                            <td>
+                                <button name="bcancel" class="btn btn-warning" onclick="bcan('{{s.id}}')">Batch Cancel
+                                    for Today
+                                </button>
+                            </td>
+
+                        </tr>
+                        {% endfor%}
+                        </tbody>
+
+                        <tfoot>
+                        <tr class="active">
+                            <td colspan="8">
+                                <div class="text-right">
+                                    <ul class="pagination pagination-split justify-content-end footable-pagination m-t-10"></ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div> <!-- end card-box -->
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div> <!-- end container -->
+</div>
+<!-- end wrapper -->
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+
+<form action="/batchinsert/" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div id="con-close-modal-roleacm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Batch</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Role_name" class="control-label">Select Languages</label>
+                                <select class="form-control" name="lang">
+                                    {% for r in results %}
+                                    <option>{{ r.lang }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Role_name" class="control-label">Batch Name</label>
+                                <input type="text" class="form-control" name="batch" placeholder="Enter Batch Name.">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <div class="input-group clockpicker " data-placement="top" data-align="top"
+                                 data-autoclose="true">
+                                <input type="text" name="time1" class="form-control" placeholder="Sarting Time">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <center> To</center>
+                        <div class="form-group col-md-5">
+                            <div class="input-group clockpicker" data-placement="top" data-align="top"
+                                 data-autoclose="true">
+                                <input type="text" name="time2" class="form-control" placeholder="Ending Time">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="mdi mdi-clock-outline"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <span>-------------------- Choices Days -------------------</span><br><br>
+
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="form-check-input" name="day" value="Sun">
+                            <label class="form-check-label">Sunday</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="form-check-input" name="day" value="Mon">
+                            <label class="form-check-label">Monday</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="form-check-input" name="day" value="Tues">
+                            <label class="form-check-label">Tuesday</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="form-check-input" name="day" value="Wed">
+                            <label class="form-check-label">Wednesday</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="form-check-input" name="day" value="Thur">
+                            <label class="form-check-label">Thursday</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="form-check-input" name="day" value="Fri">
+                            <label class="form-check-label">Friday</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="form-check-input" name="day" value="Sat">
+                            <label class="form-check-label">Saturday</label>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light" id="UU">Save</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+
+
+<script>
+    function batchdelete(id)
+    {
+       window.location.href="/batchdel/?id="+id;
+    }
+
+</script>
+
+<script>
+    function bcan(id)
+     {
+       window.location.href="/cancleb/?id="+id;
+
+     }
+
+</script>
+</body>
+</html>
+{% endblock %}

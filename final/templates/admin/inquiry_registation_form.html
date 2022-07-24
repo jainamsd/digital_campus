@@ -1,0 +1,435 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+{% load static %}
+{% block A %}
+
+<script>
+    $(function () {
+  $('.sev_check').click(function(e) {
+    $('.sev_check').not(this).prop('checked', false);
+  });
+});
+</script>
+
+<script type="text/javascript">
+    function ShowHideDiv(chkPassport) {
+        var dvPassport = document.getElementById("dvPassport");
+        dvPassport.style.display = chkPassport.checked ? "block" : "none";
+    }
+</script>
+<script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
+
+
+
+
+<script>
+function adata(id){
+             $.ajax({
+                url:'/cid/',
+                type:'POST',
+                data:{'id':id,csrfmiddlewaretoken:'{{ csrf_token }}'},
+                dataType:'JSON',
+                success:function(data){
+                if(data.result=='true'){
+                    $('#str_id').html('');
+                    var o =$('<option/>').text('Select Language');
+                    $('#str_id').append(o);
+                    $(data.data).each(
+                        function ()
+                        {
+                                $.ajax({
+                                    url:'/did/',
+                                    method:'POST',
+                                    data:{'id':this.lang_id,csrfmiddlewaretoken:'{{csrf_token}}'},
+                                    dataType:'JSON',
+                                    success:function(dat){
+                                            $(dat.data).each(
+                                                function()
+                                                {
+                                                    var o = $('<option/>');
+                                                    o.attr('value',this.id).text(this.lang);
+                                                    $('#str_id').append(o);
+                                                }
+                                            );
+                                    }
+                                });
+
+                        }
+                    );
+                }
+                else{
+                    alert('Wrong...!!!!');
+                }
+            }
+            });
+            }
+
+
+
+            function bdata(id){
+             $.ajax({
+                url:'/pid/',
+                type:'POST',
+                data:{'id':id,csrfmiddlewaretoken:'{{ csrf_token }}'},
+                dataType:'JSON',
+                success:function(data){
+                if(data.result=='true'){
+                    $('#price_id').html('');
+                    var o =$('<option/>').text('Select Price');
+                    $('#price_id').append(o);
+                    $(data.data).each(
+                        function ()
+                        {
+                            var o = $('<option/>');
+                            o.attr('value',this.id).text(this.price);
+                            $('#price_id').append(o);
+                        }
+                    );
+                }
+                else{
+                    alert('nathi thayu bakaaaaa!!!!');
+                }
+            }
+            });
+            }
+
+</script>
+
+
+
+
+
+
+<div class="card-body">
+
+                                <form method="POST" action="/insertregistrations/">
+                                    {% csrf_token %}
+                                    <input type="hidden" id="inqda" name="inqda">
+                                    <div id="progressbarwizard">
+                                        <input type="hidden" name="inq_id" id="inq_id">
+                                        <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-3">
+                                            <li class="nav-item">
+                                                <a href="#account-2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                    <i class="mdi mdi-account-circle mr-1"></i>
+                                                    <span class="d-none d-sm-inline ">Personal Information</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a href="#profile-tab-2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                    <i class="mdi mdi-face-profile mr-1"></i>
+                                                    <span class="d-none d-sm-inline ">Educational Background</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a href="#profile-tab-4" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                    <i class="mdi mdi-face-profile mr-1"></i>
+                                                    <span class="d-none d-sm-inline"> Select Languages and Fees Structure</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a href="#finish-2" data-style="expand-right" data-toggle="tab"  class="nav-link rounded-0 pt-2 pb-2">
+                                                    <i class="mdi mdi-checkbox-marked-circle-outline mr-1"></i>
+                                                    <span class="d-none d-sm-inline">Submit</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content b-0 mb-0">
+
+                                            <div id="bar" class="progress mb-3" style="height: 7px;">
+                                                <div class=" progress-bar bg-info bar progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+                                            </div>
+
+                                            <div class="tab-pane" id="account-2">
+                                                <hr>
+                                                <h5 class="mb-3 text-uppercase bg-light p-2"><i class="fas fa-graduation-cap mr-1"></i>
+                                                Personal Info.</h5>
+
+                                                 <div class="row">
+                                                     <div class="row">
+                                                         <div class="col-3">
+                                                             {% for s in result %} <img src="/media/{{s.studentphoto }}" class="rounded-circle avatar-lg" alt="studentphoto">{%endfor%}
+                                                         </div>
+                                                    </div>
+                                                     <div class="col-md-4">
+                                                          {%for d in result%}
+                                                         <label  class="col-md-12 col-form-label ">Full Name:
+                                                        <span class="text-danger">*</span></label>
+                                                            <div class="col-md-12">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+                                                                <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Enter Name Here.."value="{{d.fullname}} "></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+
+                                                     <div class="col-md-3">
+                                                        <label for="pcontact" class="col-md-12 col-form-label">Personal Contact:
+                                                        <span class="text-danger">*</span></label>
+                                                            <div class="col-md-12">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="fe-phone-call"></i></span>
+                                                                    <input type="number" name="pnum" class="form-control" id="contact"
+                                                                           placeholder="+91 12345 67890" value="{{d.pnum}}"> </textarea>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+
+                                                     <div class="col-md-4">
+                                                        <label for="" class="col-md-12 col-form-label">Email-Id:
+                                                        <span class="text-danger">*</span></label>
+                                                            <div class="col-md-12">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="mdi mdi-email"></i></span>
+                                                                    <input type="email" name="email" class="form-control" id="email"
+                                                                        placeholder="ex: abc@gmail.com" value="{{d.email}}"></textarea>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+
+                                                </div><br>
+
+                                                <!-- /.First row end -->
+
+                                            <div class="row">
+                                                <div class="form-group col-1">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="reffname" class="col-md-12 col-form-label">Refference Name:
+                                                    <span class="text-danger">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+                                                                <input type="text" name="reffname" class="form-control" id="emailaddress"
+                                                                    placeholder="Refference Name" value="{{d.reffname}}"></textarea>
+                                                            </div>
+                                                        </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label for="reffcontact" class="col-md-12 col-form-label">Refference Contact:
+                                                    <span class="text-danger">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text"><i class="fe-phone-call"></i></span>
+                                                                 <input type="text" name="reffcontact" class="form-control" value="{{d.reffcontact}}" ></textarea>
+                                                            </div>
+                                                        </div>
+                                                </div>
+
+                                            </div> <!-- /.second row end -->
+
+                                            </div>
+
+                                            <div class="tab-pane" id="profile-tab-2">
+                                                <hr>
+                                                <h5 class="mb-3 text-uppercase bg-light p-2"><i class="fas fa-graduation-cap mr-1"></i>
+                                                educational background</h5>
+
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label for="university" class="col-md-10 col-form-label">Selected Current University:
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append border border-secondary">
+                                                                <span class="input-group-text"><i class="fa fa-university"></i></span>
+                                                                <select class="selectpicker" name="University" data-live-search="true" data-style="btn-light">
+                                                                    <option  value="{{d.University}}">{{d.University}}</option>
+                                                                </select>
+<!--                                                                <select class="selectpicker" data-live-search="true"-->
+<!--                                                                        name="University" data-style="btn-light">-->
+<!--                                                                    <option>{{d.University}} <i class="fa fa-caret-down"-->
+<!--                                                                                                aria-hidden="true"></i>-->
+<!--                                                                    </option>-->
+<!--                                                                </select>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label for="Institute" class="col-md-12 col-form-label">Selected
+                                                            Current Institute:
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append border border-secondary">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa fa-university"></i></span>
+                                                                <select class="selectpicker" data-live-search="true"
+                                                                        name="Institute" data-style="btn-light">
+                                                                    <option>{{d.Institute}}</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="sem" class="col-md-12 col-form-label">Selected
+                                                            Current Semester:
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append border border-secondary ">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa fa-university"></i></span>
+                                                                <select class="selectpicker" data-live-search="true"
+                                                                        name="Semester" data-style="btn-light" required>
+                                                                    <option>{{d.Semester}}</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="stream" class="col-md-12 col-form-label">Selected
+                                                            Current Stream:
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append border border-secondary">
+                                                                <span class="input-group-text "><i
+                                                                        class="fa fa-university"></i></span>
+                                                                <select class="selectpicker" data-live-search="true"
+                                                                        name="Stream" data-style="btn-light">
+                                                                    <option>{{d.Stream}}</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-3">
+                                                        <label for="stream" class="col-md-12 col-form-label">Selected Structure:
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append border border-secondary">
+                                                                <span class="input-group-text "><i
+                                                                        class="fa fa-university"></i></span>
+                                                                <select class="selectpicker" data-live-search="true" name="structurename" data-style="btn-light">
+                                                                    <option>{{d.structurename.structurename}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="stream" class="col-md-12 col-form-label">Selected Training Typed:
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append border border-secondary">
+                                                                <span class="input-group-text "><i
+                                                                        class="fa fa-university"></i></span>
+                                                                <select class="selectpicker" data-live-search="true" name="TrainigTyped" data-style="btn-light">
+                                                                    <option>{{d.TrainigTyped.TrainigTyped}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="stream" class="col-md-12 col-form-label">Selected Language:
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-md-12">
+                                                            <div class="input-group-append border border-secondary">
+                                                                <span class="input-group-text "><i
+                                                                        class="fa fa-university"></i></span>
+                                                                <select class="selectpicker" data-live-search="true" name="lang" data-style="btn-light">
+                                                                    <option>{{d.lang.lang}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div> <!-- <row end> -->
+                                                <!-- <row end> -->
+
+                                            </div>
+                                            <div class="tab-pane" id="profile-tab-4">
+                                                <hr>
+                                                <h5 class="mb-3 text-uppercase bg-light p-2"><i class="fas fa-graduation-cap mr-1"></i>
+                                                Fill Fees Details</h5>
+                                                <div class="col-md-12 ">
+                                                    <select class="border border-secondary btn btn-primary dropdown-toggle" name="structurename" onchange="adata(this.value)">
+                                                        <option>Selecte Structures</option>
+                                                     {%for r in res %}
+                                                         <option value="{{r.id}}">{{r.structurename}}</option>
+                                                    {%endfor%}
+                                                    </select>
+
+                                                    <select class="border border-secondary btn btn-primary dropdown-toggle" onchange="bdata(this.value)"  name="lang" id="str_id" >
+                                                         <option>Select Languages</option>
+                                                        <option value= ""></option>
+                                                    </select>
+                                                     <select class="border border-secondary btn btn-primary dropdown-toggle" name="price" id="price_id" >
+                                                          <option>Select Price</option>
+                                                        <option value= ""></option>
+                                                    </select>
+
+                                                    <select class="border border-secondary btn btn-primary dropdown-toggle" data-live-search="true" name="installment"  data-style="btn-light">
+                                                                        <option>Select Installment <i class="fas fa-hashtag"></i></option>
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                        <option>5</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane" id="finish-2">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="text-center">
+                                                            <div class="mb-3">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                      <i class="icon-user icon-white"></i> Save Record
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                                {% endfor %}
+                                            </div>
+
+                                            <ul style="margin-top:30px;" class="list-inline mb-0 wizard">
+                                                <li class="previous list-inline-item">
+                                                    <a href="javascript: void(0);" class="btn btn-secondary">Previous</a>
+                                                </li>
+
+                                                <li class="next list-inline-item float-right">
+                                                    <a href="javascript: void(0);" class="btn btn-secondary">NEXT</a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div> <!-- tab-content -->
+                                    </div> <!-- end #progressbarwizard-->
+                                </form>
+
+                            </div> <!-- end card-body -->
+
+
+
+{% endblock %}

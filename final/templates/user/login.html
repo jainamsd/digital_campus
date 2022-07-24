@@ -1,0 +1,621 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+
+{% load static %}
+
+<!-- Mirrored from demo.hasthemes.com/eduhas-preview/eduhas/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Apr 2020 12:29:19 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Digital Campus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/user/favicon.ico'%}">
+
+    <!-- CSS
+    ========================= -->
+    <link rel="stylesheet" href="ttps://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/user/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css'%}">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'css/user/plugins.css'%}">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/user/style.css'%}">
+
+    <!-- Modernizer JS -->
+    <script src="{% static 'js/pages/user/vendor/modernizr-3.6.0.min.js'%}"></script>
+</head>
+
+<body>
+
+<!-- Main Wrapper Start -->
+<div class="main-wrapper">
+
+    <header class="header-area">
+        <!-- header-top-area -->
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+
+                        <!-- top-contact-info -->
+                        <div class="top-contact-info">
+                            <ul>
+                                <li><a href="tel:012345676"><i class="zmdi zmdi-phone"></i> +98 558 547 589</a></li>
+                                <li><a href="mailto:education@ingo.com"><i class="zmdi zmdi-email"></i>digitalcampus@gmail.com</a>
+                                </li>
+                            </ul>
+                        </div><!--// top-contact-info -->
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="top-info-right">
+
+                            <!-- top-social -->
+                            <div class="top-social">
+                                <ul>
+                                    <li><a href="facebook.com/index.html"><i class="zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href="https://www.instagram.com/"><i class="zmdi zmdi-instagram"></i></a>
+                                    </li>
+                                    <li><a href="#"><i class="zmdi zmdi-rss"></i></a></li>
+                                </ul>
+                            </div><!--// top-social -->
+
+                            <!-- login-and-register -->
+                            <div class="login-and-register">
+                                <ul>
+                                    <li><a href="/login/">Login</a></li>
+
+                                </ul>
+                            </div><!--// login-and-register -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--// header-top-area -->
+
+        <div class="header-bottom-area header-sticky header-sticky">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-5 col-6">
+
+                        <!-- logo-area -->
+                        <div class="logo">
+                            <a href="/userinquiry/"><img src="{% static 'images/user/dig1.png'%}" alt=""></a>
+                        </div><!--// logo-area -->
+
+                    </div>
+
+                    <div class="col-lg-9 col-md-7 col-6">
+
+                        <div class="header-bottom-right">
+                            <!-- main-menu -->
+                            <div class="main-menu">
+                                <nav class="main-navigation">
+                                    <ul>
+                                        <li class="active"><a href=''> HOME</a>
+
+                                        </li>
+
+                                        <li><a href=''>ABOUT</a>
+
+                                        </li>
+
+                                        </li>
+                                        <li><a href="course-grid.html">COURSES</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/javalangdecription/">Java Programing </a></li>
+                                                <li><a href="/javalangdecription/">PHP Programing </a></li>
+                                                <li><a href="/nodjs/">Nodejs Programing </a></li>
+                                                <li><a href="/pythonlang/">Python Programing </a></li>
+                                                <li><a href="/CANDCPLUS/">C/C++ Programing </a></li>
+                                                <li><a href="/htmlandcss/">HTML/CSS Programing </a></li>
+                                                <li><a href="/devlopment/">WEB Devlopment</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">CONTACTUS</a>
+
+                                        </li>
+                                        <li class="active "><b>
+                                            <button class="btn btn-blue waves-effect waves-light" data-toggle="modal"
+                                                    data-target=".bd-example-modal-xl" onclick="openmodel()"> INQUIRY
+                                            </button>
+                                        </b></li>
+                                    </ul>
+                                </nav>
+                            </div><!--// main-menu -->
+
+                            <div class="mini-wrap-sidebar">
+
+                                <!-- mini-cart-wrap  -->
+                                <div class="mini-cart-wrap">
+
+
+                                    <!-- mini-cart-wrap -->
+                                    <div class="mini-cart-wrap">
+                                        <ul>
+                                            <!-- single-item -->
+                                            <li class="single-item">
+                                                <div class="product-img">
+                                                    <a href="#"><img src="{% static 'images/user/other/cart-01.jpg'%}"
+                                                                     alt=""></a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5><a href="#">This is product title hear one</a></h5>
+                                                    <div class="price-box">
+                                                        <span class="new-price">$55.21</span>
+                                                    </div>
+                                                    <div class="size">
+                                                        Size: S
+                                                    </div>
+                                                </div>
+                                                <div class="remove-from-cart">
+                                                    <a href="#" title="Remove"><i class="zmdi zmdi-delete"></i></a>
+                                                </div>
+                                            </li><!--// single-item -->
+
+                                            <!-- single-item -->
+                                            <li class="single-item">
+                                                <div class="product-img">
+                                                    <a href="#"><img src="{% static 'images/user/other/cart-02.jpg'%}"
+                                                                     alt=""></a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5><a href="#">This is product title hear two</a></h5>
+                                                    <div class="price-box">
+                                                        <span class="new-price">$55.21</span>
+                                                    </div>
+                                                    <div class="size">
+                                                        Size: S
+                                                    </div>
+                                                </div>
+                                                <div class="remove-from-cart">
+                                                    <a href="#" title="Remove"><i class="zmdi zmdi-delete"></i></a>
+                                                </div>
+                                            </li><!--// single-item -->
+                                            <li>
+                                                <!--  shopping-cart-total  -->
+                                                <div class="shopping-cart-total">
+                                                    <h5>Sub-Total : <span>$127.42</span></h5>
+                                                    <h5>Total : <span>$127.42</span></h5>
+                                                </div><!--//  shopping-cart-total  -->
+                                            </li>
+                                            <li>
+                                                <!-- shopping-cart-btn -->
+                                                <div class="shopping-cart-btn">
+                                                    <a href="checkout.html">Checkout</a>
+                                                </div><!--// shopping-cart-btn -->
+                                            </li>
+                                        </ul>
+                                    </div><!--// main-cart-wrap -->
+
+                                </div><!--// main-cart-wrap  -->
+
+                                <div class="search-wrap">
+                                    <button class="header-search-toggle"><i class="zmdi zmdi-search"></i></button>
+                                    <div class="header-search-form">
+                                        <form action="#">
+                                            <input type="text" placeholder="Type and hit enter">
+                                            <button><i class="zmdi zmdi-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <!-- mobile-menu start -->
+                        <div class="mobile-menu d-block d-lg-none"></div>
+                        <!-- mobile-menu end -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+
+    <!-- Page Conttent -->
+    <main class="page-content" style="background-image: url('/static/images/user/bga.jpg')">
+        <div class="register-page section-ptb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                        <div class="login-register-wrapper" style="background-color:white;">
+                            <!-- login-register-tab-list start -->
+                            <div class="login-register-tab-list nav" style="background-color:white;"><br>
+                                <a class="active" data-toggle="tab" href="#lg1"><br>
+                                    <h4> login </h4>
+                                </a>
+                            </div>
+                            <!-- login-register-tab-list end -->
+                            <div class="tab-content">
+                                <div id="lg1" class="tab-pane active">
+                                    <div class="login-form-container">
+                                        <div class="login-register-form">
+                                            <form action="/logininsert1/" method="post">
+                                                {% csrf_token %}
+                                                <div class="login-input-box">
+                                                    <input type="text" name="fullname" placeholder="User Name">
+                                                    <input type="password" name="password" placeholder="Password">
+                                                </div>
+                                                <div class="button-box">
+                                                    <div class="login-toggle-btn">
+                                                        <a href="#">Forgot Password?</a>
+                                                    </div>
+                                                    <div class="button-box">
+                                                        <button class="login-btn btn" type="submit"><span>Login</span></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="lg2" class="tab-pane">
+                                    <div class="login-form-container">
+                                        <div class="login-register-form">
+                                            <form action="#" method="post">
+                                                <div class="login-input-box">
+                                                    <input type="text" name="user-name" placeholder="User Name">
+                                                    <input type="password" name="user-password" placeholder="Password">
+                                                    <input name="user-email" placeholder="Email" type="email">
+                                                </div>
+                                                <div class="button-box">
+                                                    <button class="register-btn btn" type="submit"><span>Register</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!--// Page Conttent -->
+    <footer class="footer-area">
+
+        <!-- Footer Top Area -->
+        <div class="footer-top section-pb section-pt-60">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 mt--60">
+                        <div class="footer-single-block">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="{% static 'images/user/dig1.png'%}" alt=""></a>
+                            </div>
+                            <p class="footer-dec">Our Technologies</p>
+                            <ul class="footer">
+                                <li style="color:white;">HTML 5 - CSS 3</li>
+                                <li style="color:white;">Php Development</li>
+                                <li style="color:white;">WordPress Development</li>
+                                <li style="color:white;">Java Development</li>
+                                <li style="color:white;">ASP .Net Development</li>
+                                <li style="color:white;">Android Application Development</li>
+                                <li style="color:white;">Python Development</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt--60">
+                        <div class="footer-single-block">
+
+                            <p class="footer-dec">Our Services</p>
+                            <ul class="footer">
+                                <li style="color:white;">Website Design and Development</li>
+                                <li style="color:white;">Enterprise Resource Planning Development</li>
+                                <li style="color:white;">Web Application Development</li>
+                                <li style="color:white;">E-Commerce Website Development</li>
+                                <li style="color:white;">Mobile Application Development</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-3 col-md-6 mt--60">
+                        <div class="footer-block">
+                            <h5>Get in Touch</h5>
+                            <ul class="footer-courses">
+                                <li style="color:white;"><a href="tel:012345676"><i class="zmdi zmdi-phone"></i> +98 558 547 589</a></li>
+                                <li style="color:white;"><a href="tel:012345676"><i class="fa fa-envelope" aria-hidden="true"></i> Digital@gmail.com </a></li>
+                                <li style="color:white;"><a href="tel:012345676"><i class="fa fa-address-card-o" aria-hidden="true"></i> 424,GALA EMPIRE,
+OPP.DOOR-DARSHAN TOWER
+         Nr. SAL HOSPITAL,
+          S.G.HIGHWAY,THALTEJ,
+AHMEDABAD.380052</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!--// Footer Top Area -->
+
+        <!-- Footer-bottom Area -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copy-right pt--10 pb--10 text-center text-white">
+                            <p>Copyright© 2020 <a href="#">Digital Campus</a>,Designed by <span>Akash Gohil</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--// Footer-botton Area -->
+
+    </footer>
+    <!--// Footer Area -->
+
+
+</div>
+<!-- Main Wrapper End -->
+
+<form action="/student_inquiry/" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-xl">
+
+            <div class="modal-content">
+                <br>
+                <div class="model-header" style="font-size:200%;">
+                    <center>Fill Inquiry Form</center>
+                </div>
+                <br>
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="col-md-12 col-form-label">Student Photo:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-12">
+                               <input type="file" name="studentphoto" class="dropify fas fa-upload"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="col-md-10 col-form-label">Full Name:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" data-validate="true" name="fullname"
+                                       placeholder="Enter Full Name Here">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="pcontact" class="col-md-12 col-form-label">Personal Contact:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-12">
+                                <div class="input-group-append">
+                                    <input type="number" name="pnum" class="form-control" id="contact"
+                                           placeholder="+91 12345 67890"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="Emailadrress" class="col-md-10 col-form-label">Email ID:
+                                <span class="text-danger">*</span></label>
+                            <div class="col-md-10">
+                                <div class="input-group-append">
+                                    <input type="email" name="email" class="form-control" id="emailaddress"
+                                           placeholder="example@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="reffname" class="col-md-10 col-form-label">Refference Name:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-10">
+                                    <div class="input-group-append">
+                                        <input type="text" name="reffname" class="form-control"
+                                               placeholder="Refference Name"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="reffcontact" class="col-md-10 col-form-label">Refference Contact:
+                                    <span class="text-danger"></span></label>
+                                <div class="col-md-10">
+                                    <div class="input-group-append">
+                                        <input type="numbers" maxlength="13" name="reffcontact" class="form-control"
+                                               id="reffcontact"
+                                               placeholder="+91 12345 67890"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="col-md-8 col-form-label">Inquiry Date:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-9">
+                                    <div class="input-group-append">
+                                        <input type="date" name="inqdate" class="form-control" placeholder="INQDATE" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-md-8 col-form-label">DOB:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-9">
+                                    <div class="input-group-append">
+                                        <input type="date" name="dob" class="form-control border border-primary" placeholder="INQDATE" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="university" class="col-md-12 col-form-label">Current University:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker" data-live-search="true" name="University"
+                                            data-style="btn-light">
+                                        <option>Select Current University <i class="fa fa-caret-down"
+                                                                             aria-hidden="true"></i></option>
+                                        <option>Gujarat Technological University</option>
+                                        <option>Nirma University</option>
+                                        <option>Pandit Dindayal Petrolium University</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Institute" class="col-md-12 col-form-label">Current Institute:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker" data-live-search="true" name="Institute"
+                                            data-style="btn-light">
+                                        <option>Select Current Institute</option>
+                                        <option>L.J. Institute of technology</option>
+                                        <option>Institute of Technology</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label class="col-md-10 col-form-label  ">Languages for Inquiry:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-10 ">
+                                    <select class="selectpicker " data-live-search="true" name="lang">
+                                        <option>Select Languages</option>
+                                        {%for s in res%}
+                                        <option value="{{s.id}}">{{s.lang}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="sem" class="col-md-12 col-form-label">Current Semester:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker" data-live-search="true" name="Semester"
+                                            data-style="btn-light">
+                                        <option>Select Current Semester</option>
+                                        <option>First</option>
+                                        <option>Second</option>
+                                        <option>Third</option>
+                                        <option>Forurth</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="stream" class="col-md-12 col-form-label">Current Stream:
+                                    <span class="text-danger">*</span></label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker" data-live-search="true" name="Stream"
+                                            data-style="btn-light">
+                                        <option>Select Current Stream</option>
+                                        <option>Diploma</option>
+                                        <option>Bachelor Degree(B.Tech)</option>
+                                        <option>Masters Degree(M.Tech)</option>
+                                        <option>Bachelor Of Computer Application</option>
+                                        <option>Masters Of Computer Application</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="col-md-12 col-form-label">Select Structures:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker" data-live-search="true" name="structurename"
+                                            data-style="btn-light">
+                                        <option>Select Structure to learning</option>
+                                        {%for s in ress%}
+                                        <option value="{{s.id}}">{{s.structurename}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="col-md-5">
+                                <label class="col-md-6 col-form-label">Select Typed of Training:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-md-12">
+                                    <select class="selectpicker border border-primary" required="" data-live-search="true" name="TrainigTyped"
+                                            data-style="btn-light">
+                                        <option>Select Typed of Training</option>
+                                        {%for s in resu%}
+                                        <option value="{{s.id}}">{{s.TrainigTyped}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                            </div><br>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <div class="mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="icon-user icon-white"></i> Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+
+<!-- JS
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="{% static 'js/pages/user/vendor/jquery-3.3.1.min.js'%}"></script>
+<!-- Popper JS -->
+<script src="{% static 'js/pages/user/popper.min.js'%}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'js/pages/user/bootstrap.min.js'%}"></script>
+<!-- Plugins JS -->
+<script src="{% static 'js/pages/user/plugins.js'%}"></script>
+<!-- Ajax Mail -->
+<script src="{% static 'js/pages/user/ajax-mail.js'%}"></script>
+<!-- Main JS -->
+<script src="{% static 'js/pages/user/main.js'%}"></script>
+
+
+</body>
+
+
+</html>

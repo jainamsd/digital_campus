@@ -1,0 +1,268 @@
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+{% load static %}
+{% block A %}
+
+
+<div class="">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <div class="input-group input-group-sm">
+                                                    <span>Today Date:</span><input type="text" class="form-control border-white" value="{% now "d-m-Y" %}" id="dash-daterange">
+                                                    <div class="input-group-append">
+                                                            <span class="input-group-text bg-blue border-blue text-white"><i class="mdi mdi-calendar-range font-13"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <h4 class="page-title">Dashboard</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-md-2 col-xl-4">
+                                <div class="widget-rounded-circle card-box">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle shadow-lg bg-info border-info border">
+                                                <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1">
+                                                    <center><span data-plugin="counterup">{{ inquiry }}</span></center>
+                                                </h3>
+                                                <center><p class="text-muted mb-1 text-truncate">Pending Inquiries</p>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+
+
+                            <div class="col-md-2 col-xl-4">
+                                <div class="widget-rounded-circle card-box">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle shadow-lg bg-info border-info border">
+                                                 <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1">
+                                                    <center><span data-plugin="counterup">{{ ddd }}</span></center>
+                                                </h3>
+                                                <center><p class="text-muted mb-1 text-truncate">Confirm Inquiries</p>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+
+                            <div class="col-md-2 col-xl-4">
+                                <div class="widget-rounded-circle card-box">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle shadow-lg bg-info border-info border">
+                                                <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1">
+                                                    <center><span data-plugin="counterup">{{ yyy }}</span></center>
+                                                </h3>
+                                                <center><p class="text-muted mb-1 text-truncate">Closed Inquiries</p>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+
+                        </div>
+                        <!-- end row-->
+                        <div class="row">
+                            <div class="col-md-10 col-xl-12">
+                                <div class="widget-rounded-circle card-box">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle shadow-lg bg-info border-info border">
+                                                <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1">
+                                                    <center><span data-plugin="counterup">{{ complete }}</span></center>
+                                                </h3>
+                                                <center><p class="text-muted mb-1 text-truncate">Total Courses Completed
+                                                    by Students</p></center>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card-box">
+<!--                                    <h4 class="header-title mb-10">Total Inquiries in Our System</h4>-->
+
+                                    <div class="widget-chart text-center" dir="ltr">
+                                        <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle shadow-lg bg-info border-info border">
+                                                 <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark mt-1">
+                                                    <center><span data-plugin="counterup">{{ fff }}</span></center>
+                                                </h3>
+                                                <center><p class="text-muted mb-1 text-truncate">Total Inquiries in Our System</p></center>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+
+
+
+<!--                                        <input data-plugin="knob" data-width="200" data-height="200" data-linecap=round-->
+<!--                                               data-fgColor="#f1556c" value="{{ fff }}" data-skin="tron"-->
+<!--                                               data-angleOffset="180" data-readOnly=true data-thickness=".12"/>-->
+
+                                    </div>
+                                </div> <!-- end card-box -->
+                            </div> <!-- end col-->
+
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card-box">
+                                    <h4 class="header-title mb-3">Registered Students</h4>
+
+                                    <div class="table-responsive">
+                                        <table id="demo-custom-toolbar" data-toggle="table" data-toolbar="#demo-delete-row" data-search="true" data-show-refresh="true" data-show-columns="true" data-sort-name="id" data-page-list="[5, 10, 20]" data-page-size="5" data-pagination="true" data-show-pagination-switch="true" class="table table-borderless table-hover table-centered m-0">
+
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th colspan="">Fullname</th>
+                                                <th>Number</th>
+                                                <th>Language</th>
+                                                <th>Allocated Batch</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                             {% for s in reg %}
+                                            <tr>
+
+                                                <td>
+                                                    <h5 class="m-0 font-weight-normal text-success">{{ s.fullname }}</h5>
+
+                                                </td>
+
+                                                <td>
+                                                    <center class="m-0 font-weight-normal">{{ s.pnum }}</center>
+                                                </td>
+                                                <td>
+                                                    <center>{{ s.lang.lang }}</center>
+                                                </td>
+
+                                                <td>
+                                                    <center class="text-danger">{{ s.batch.batch }}</center>
+                                                </td>
+
+                                                <td>
+                                                    <center class="text-success">{{ s.status }}</center>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+
+                            <div class="col-xl-6">
+                                <div class="card-box">
+                                    <h4 class="header-title mb-3">Total Batch</h4>
+
+                                    <div class="table-responsive">
+                                        <table id="demo-custom-toolbar" data-toggle="table" data-toolbar="#demo-delete-row" data-search="true" data-show-refresh="true" data-show-columns="true" data-sort-name="id" data-page-list="[3, 6, 9]" data-page-size="3" data-pagination="true" data-show-pagination-switch="true" class="table table-borderless table-hover table-centered m-0">
+
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th colspan="">Batch Name</th>
+                                                <th>Language</th>
+                                                <th>Sating Time</th>
+                                                <th>Ending Time</th>
+                                                <th>Days</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                {% for s in batch %}
+                                                <td>
+                                                    <h5 class="m-0 font-weight-normal text-success">{{ s.batch }}</h5>
+
+                                                </td>
+
+                                                <td>
+                                                    <center class="m-0 font-weight-normal">{{ s.lang.lang }}</center>
+                                                </td>
+                                                <td>
+                                                    <center>{{ s.time1 }}</center>
+                                                </td>
+
+                                                <td>
+                                                    <center class="text-danger">{{ s.time2 }}</center>
+                                                </td>
+
+                                                <td>
+                                                    <center class="text-success">{{ s.day }}</center>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+                </div>
+                <!-- end row -->
+
+                    </div> <!-- end container -->
+
+                </div>
+                <!-- end wrapper -->
+{%endblock%}

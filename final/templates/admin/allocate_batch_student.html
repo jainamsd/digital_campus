@@ -1,0 +1,196 @@
+
+{% extends 'admin/home.html' %}
+
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+{% load static %}
+{% block A %}
+
+
+<head>
+    <meta charset="utf-8"/>
+    <title> BATCH </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Allocate Batch</a></li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Allocate Students Details</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <div class="mb-2">
+                        <div class="row">
+                            <div class="col-12 text-sm-center form-inline">
+                                <div class="form-group mr-2">
+                                    <button id="demo-btn-addrow" class="btn btn-primary" data-toggle="modal"
+                                            data-animation="sign" data-plugin="custommodal"
+                                            data-target="#con-close-modal-roleacm" onclick="openmodel()"><i
+                                            class="mdi mdi-plus-circle mr-2"></i> Select Batch
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <input id="demo-input-search2" type="text" placeholder="Search" class="form-control"
+                                           autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-centered table-striped table-bordered mb-0 toggle-circle"
+                           data-page-size="7">
+                        <thead>
+                        <tr>
+                            <th data-field="state" data-checkbox="true">Student Name</th>
+                            <th data-field="lang" data-sortable="true">Language</th>
+                            <th data-field="batch" data-sortable="true">Structure</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                         {% for s in res %}
+                        <tr>
+                            <td>{{s.fullname}}</td>
+                            <td>{{ s.lang.lang }}</td>
+                            <td>{{s.structurename.structurename}}</td>
+
+
+                        </tr>
+                        {% endfor%}
+                        </tbody>
+
+                        <tfoot>
+                        <tr class="active">
+                            <td colspan="8">
+                                <div class="text-right">
+                                    <ul class="pagination pagination-split justify-content-end footable-pagination m-t-10"></ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div> <!-- end card-box -->
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div> <!-- end container -->
+</div>
+<!-- end wrapper -->
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+
+<form action="/allcoatebatchinsert/" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div id="con-close-modal-roleacm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Select Batch</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body p-4">
+                    <select class="selectpicker" data-live-search="true" data-style="btn-light" name="batch">
+                        <option>Select Batch</option>
+                        {% for d in results %}
+                        <option>{{ d.batch }}</option>
+                        {%endfor%}
+                    </select><br><br>
+                    <table class="table table-centered table-striped table-bordered mb-0 toggle-circle"
+                           data-page-size="7">
+                        <thead>
+                        <tr>
+                            <th data-field="state" data-checkbox="true"></th>
+                            <th data-field="state1">Student Name</th>
+                            <th data-field="lang" data-sortable="true">Language</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                         {% for s in res %}
+                        <tr>
+                            <td><input type="checkbox" value="{{s.id}}" name="check[]"></td>
+                            <td>{{s.fullname}}</td>
+                            <td>{{ s.lang.lang }}</td>
+
+                        </tr>
+                        {% endfor%}
+                        </tbody>
+
+                        <tfoot>
+                        <tr class="active">
+                            <td colspan="8">
+                                <div class="text-right">
+                                    <ul class="pagination pagination-split justify-content-end footable-pagination m-t-10"></ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info waves-effect waves-light" id="UU">Save</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+</form>
+<!--====================================================================================
+-----------------------------------MODEL CONTENT END-----------------------------------
+=====================================================================================-->
+
+
+
+<script>
+    function batchdelete(id)
+    {
+       window.location.href="/batchdel/?id="+id;
+    }
+
+</script>
+
+<script>
+    function bcan(id)
+     {
+       window.location.href="/cancleb/?id="+id;
+
+     }
+
+</script>
+</body>
+</html>
+{% endblock %}
